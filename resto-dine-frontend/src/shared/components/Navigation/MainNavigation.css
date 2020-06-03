@@ -1,0 +1,55 @@
+.main-navigation__menu-btn {
+    width: 3rem;
+    height: 3rem;
+    background: transparent;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-right: 2rem;
+    cursor: pointer;
+}
+
+.main-navigation__menu-btn span {
+    display: block;
+    width: 3rem;
+    height: 2.5px;
+    background: white;
+}
+
+.main-navigation__title {
+    color: white;
+    font-family: "Roboto Cn", sans-serif;
+    font-weight: 300;
+    /* padding: 0.4rem; */
+    /* border-radius: 0.4rem; */
+    /* border: 2px solid rgb(176, 176, 182); */
+}
+
+.main-navigation__title span {
+    color: rgb(73, 38, 9);
+}
+
+.main-navigation__title a {
+    text-decoration: none;
+    color: white;
+}
+
+.main-navigation__header-nav {
+    display: none;
+}
+
+.main-navigation__drawer-nav {
+    height: 100%;
+}
+
+@media (min-width: 768px) {
+    .main-navigation__menu-btn {
+        display: none;
+    }
+
+    .main-navigation__header-nav {
+        display: block;
+        margin-left: 1rem
+    }
+}
