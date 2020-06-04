@@ -9,7 +9,7 @@ function App() {
   return (
       <Router>        
           <MainNavigation/>
-            <Landing/>
+          <Landing/>
       </Router>
   );
 }

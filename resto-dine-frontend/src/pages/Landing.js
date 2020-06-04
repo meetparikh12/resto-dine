@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Banner from '../components/Banner'
 import Specialities from '../components/Specialities'
 import Menu from '../components/Menu'
+import Services from '../components/Services'
+import Reservation from '../components/Reservation'
 
 export default class Landing extends Component {
     render() {
@@ -10,6 +12,8 @@ export default class Landing extends Component {
                 <Banner/>
                 <Specialities/>
                 <Menu/>
+                <Services/>
+                <Reservation/>
             </div>
         )
     }
