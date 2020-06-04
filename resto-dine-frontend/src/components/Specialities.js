@@ -19,7 +19,7 @@ const food_item = [{
     price: 280
 }, {
     id: '4',
-    photo: 'https://i0.wp.com/mytastycurry.com/wp-content/uploads/2017/02/fried-rice-.jpg?resize=600%2C891&ssl=1',
+    photo: 'https://previews.123rf.com/images/indianfoodimages/indianfoodimages1901/indianfoodimages190101875/114795824-schezwan-paneer-fried-rice-with-szechuan-sauce-and-cottage-cheese-cubes-served-in-a-bowl-or-plate-or.jpg',
     name: 'Schezwan Fried Rice',
     price: 300
 }, {

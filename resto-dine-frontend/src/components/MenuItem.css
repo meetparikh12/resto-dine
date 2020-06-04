@@ -1,12 +1,14 @@
 .menu_item {
-    background: #f7f7f7;
+   
     border: 1px solid #c2c2c2;
-    padding: 10px 0;
-    margin: 1rem 0;
-    transition: all .3s ease;
-    cursor: pointer;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
-    0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    border: 0;
-    font-weight: 400;
+    padding: 2%;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+    border-radius: 0.5rem;
+
+}
+
+@media screen and (max-width: 990px) {
+    .menu_item .row .col-9 h4{
+        margin-left: 1.4rem
+    }
 }
