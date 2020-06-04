@@ -22,19 +22,53 @@
     background-position: center;
     background-repeat: no-repeat;
 }
-.bg-img::before {
-    content: "";
+
+.overlay-bg{
+    background: rgba(0, 0, 0, 0.5);
     position: absolute;
-    display: block;
-    background-color: rgb(59, 59, 58);
     top: 0;
-    left: 0;
-    opacity: 0.4;
-    width: 100%;
+    right: 0;
     height: 100%;
+    width: 100%;
+    z-index: -1;
 }
+
+.banner .overlay-content {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 40%;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    padding: 0 2rem;
+}
+.banner .overlay-content h5 {
+    letter-spacing: 1px;
+    font-weight: 400;
+    color: #f7f7f7;
+    line-height: 1.7rem;
+    font-size: 1.25rem;
+}
+.banner .overlay-content h1 {
+     font-weight: 900;
+     font-size: 52px;
+     letter-spacing: 1px;
+}
+
+.banner .overlay-content .btn {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid #FFFFFF;
+    margin: 1rem;
+    color: #fff;
+    padding: 1%;
+    text-transform: uppercase;
+}
+
 @media screen and (max-width: 575px) {
     .banner {
         height: 30rem !important;
+    }
+    .banner .overlay-content .btn {
+        padding: 2%;
     }
 }
