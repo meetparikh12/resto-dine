@@ -1,0 +1,22 @@
+.section-header {
+    text-align: center;
+}
+.section-header .asset span {
+    display: inline-block;
+    border-top: 1px solid #aeaeae;
+    height: 3px;
+    margin: 0 4px;
+    width: 48px;
+}
+.section-header h2 {
+    font-weight: 300;
+}
+.section-header .asset img {
+    width: 17px !important;
+    height: 17px !important;
+}
+.section-header .sub-title {
+    margin-top: 10px;
+    padding: 0 1rem;
+    font-weight: 300;
+}
