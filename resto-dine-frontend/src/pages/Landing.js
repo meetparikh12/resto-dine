@@ -4,6 +4,7 @@ import Specialities from '../components/Specialities'
 import Menu from '../components/Menu'
 import Services from '../components/Services'
 import Reservation from '../components/Reservation'
+import AboutUs from '../components/AboutUs'
 
 export default class Landing extends Component {
     render() {
@@ -14,6 +15,7 @@ export default class Landing extends Component {
                 <Menu/>
                 <Services/>
                 <Reservation/>
+                <AboutUs/>
             </div>
         )
     }
