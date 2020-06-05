@@ -29,7 +29,7 @@
 .footer-icons {
     text-align: right !important;
 }
-@media screen and (max-width: 767){
+@media screen and (max-width: 767px){
     .footer-icons{
         text-align: left !important;
     }
