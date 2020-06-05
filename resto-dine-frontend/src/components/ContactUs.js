@@ -15,7 +15,7 @@ export default function ContactUs() {
                     <p className="sub-title text-center">Contact Us regarding any queries or doubts. We'll try to get back within an hour.</p>
                 </div>
             </div>
-            <div className="container mt-5" style={{maxWidth: "575px"}}>
+            <div className="container mt-5 mb-5" style={{maxWidth: "575px"}}>
                 <form>
                     <div className="form-group">
                         <label for="c_name" className="font-weight-light">Your Name</label>
@@ -36,7 +36,7 @@ export default function ContactUs() {
                         </div>
                     </div>
                     <div className="form-group">
-                        <input type="submit" value="Book Table" className="btn-style"/>
+                        <input type="submit" value="Send Message" className="btn-style"/>
                     </div>
                 </form>
             </div>

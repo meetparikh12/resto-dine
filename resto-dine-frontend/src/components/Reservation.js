@@ -81,6 +81,13 @@ export default function Reservation() {
                             </div>
                         </div>
                     </div>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="form-group btn-field">
+                                <input type="submit" value="Book Table" className="btn-style"/>
+                            </div>
+                        </div>
+                    </div>
                 </form>    
             </div>
         </div>

@@ -1,0 +1,36 @@
+.footer {
+    background-color: black;
+}
+.footer-font-change {
+    font-size: 23px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 5%;
+}
+.footer-smallFont-change {
+    color: hsla(0, 0%, 100%, .7);
+    line-height: 24px;
+    font-size: 15px;
+}
+.footer-copyright {
+    background: #262626;
+    padding: 15px 0;
+    color: #8b8e94;
+    line-height: 24px;
+    font-size: 14px;
+}
+.icon {
+    font-size: 22px;
+    padding-right: 8%;
+    color: hsla(0, 0%, 100%, .2);
+}
+
+.footer-icons {
+    text-align: right !important;
+}
+@media screen and (max-width: 767){
+    .footer-icons{
+        text-align: left !important;
+    }
+}

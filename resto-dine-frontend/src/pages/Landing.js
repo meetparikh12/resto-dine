@@ -6,6 +6,7 @@ import Services from '../components/Services'
 import Reservation from '../components/Reservation'
 import AboutUs from '../components/AboutUs'
 import ContactUs from '../components/ContactUs'
+import Footer from '../components/Footer'
 
 export default class Landing extends Component {
     render() {
@@ -18,6 +19,7 @@ export default class Landing extends Component {
                 <Reservation/>
                 <AboutUs/>
                 <ContactUs/>
+                <Footer/>
             </div>
         )
     }

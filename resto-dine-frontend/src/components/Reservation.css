@@ -39,7 +39,24 @@
     letter-spacing: 5px;
 
 }
-
+.btn-style {
+    background: #111111;
+    border-radius: 10px;
+    border: none;
+    width: 130px;
+    height: 40px;
+    font-weight: 300;
+    line-height: 1.1;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.btn-field {
+    margin: 0 43%;
+}
+.btn-field .btn-style {
+    font-size: 14px;
+}
 @media screen and (max-width: 563px){
     .reservation_info {
         left: 0;
