@@ -1,7 +1,7 @@
 import React from 'react'
 import './Specialities.css'
 import MenuItem from './MenuItem'
-
+import './Menu.css'
 const menu_item = [{
     id: '1',
     photo: 'https://besthqwallpapers.com/img/original/12597/pizza-italian-food-italian-pizza-pizza-with-sausage.jpg',
@@ -29,19 +29,21 @@ const menu_item = [{
 }]
 export default function Menu() {
     return (
-        <div className="menu mb-5">
-            <br/>
-            <div className="container">
-                <div className="section-header">
-                    <h2>Menu</h2>
-                    <div className="asset">
-                        <span></span>
-                        <img src="/img/assets/spoon.png" alt="Spoon icon"/>
-                        <span></span>
+        <div className="menu">
+                <div className="bg-img-menu">
+                    <div className="section-header menu_info text-white">
+                        <span class="menu_title">Menu</span>
+                        <div className="asset">
+                            <span></span>
+                            <img src="/img/assets/spoon.png" alt="Spoon icon"/>
+                            <span></span>
+                        </div>
+                        <p className="sub-title text-center"> Here is our Menu based on categories, we serve the best food in quality as well as quantity.</p>
                     </div>
-                    <p className="sub-title"> Here is our Menu based on categories, we serve the best food in quality as well as quantity.</p>
                 </div>
                 <br/>
+                <br/>
+                <div className="container">
                 <div className="menu_items">
                     <div className="row">
                         {menu_item.map((menu)=> {

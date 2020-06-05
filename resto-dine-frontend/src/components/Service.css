@@ -1,27 +1,16 @@
-.table_title h2 {
-    font-family: Courgette;
-    line-height: 1.2;
-    color: #d61c22;
-}
-.field-name {
-    font-weight: 300;
-    text-transform: uppercase;
-}
-
-.bg-img-reservation {
-    background-image: url("/img/reservation/reservation-img.jpg");
+.bg-img-service {
+    background-image: url("/img/services/service.jpg");
     position: relative;
     min-height: 400px;
     width: 100%;
-    opacity: 0.85;
+    opacity: 0.94;
     z-index: -1;
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
-
-.reservation_info {
+.service_info {
     position: absolute;
     left: 0;
     top: 35%;
@@ -30,7 +19,7 @@
     color: #000;
 }
 
-.reservation_info .reservation_title {
+.service_info .service_title {
     font-family: Poppins;
     font-weight: 700;
     font-size: 50px;
@@ -39,10 +28,16 @@
     letter-spacing: 5px;
 
 }
-
-@media screen and (max-width: 563px){
-    .reservation_info {
+@media screen and (max-width: 563px) {
+    .service_info {
         left: 0;
-        top: 25%;
+        top: 32%;
+    }
+}
+
+@media screen and (max-width: 377px){
+    .service_info {
+        left: 0;
+        top: 22%
     }
 }

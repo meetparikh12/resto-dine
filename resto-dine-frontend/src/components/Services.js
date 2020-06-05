@@ -1,6 +1,7 @@
 import React from 'react'
 import './Specialities.css';
 import ServiceInfo from './ServiceInfo';
+import './Service.css'
 
 const services = [{
     id: '1',
@@ -25,26 +26,29 @@ export default function Services() {
     return (
         <div className="services">
         <br/>
-            <div className="container">
-                <div className="section-header">
-                    <h2>We Provide</h2>
+            <div className="bg-img-service">    
+                <div className="section-header text-white text-center service_info">
+                    <span className="service_title">We Provide</span>
                     <div className="asset">
                         <span></span>
                         <img src="/img/assets/spoon.png" alt="Spoon icon"/>
                         <span></span>
                     </div>
+                    <p className="sub-title text-center">Resto Dine provides great services which includes Customer Serivce, Food Delivery and Best Quality.</p>
                 </div>
-                <br/>
-                <div className="service_info mt-5">
+            </div>
+            <br/>
+            <div className="container">
+                <div className="service_desc mt-5">
                     <div className="row">
-                        {services.map((service)=> {
-                            return <ServiceInfo key={service.id}
-                                    id={service.id}
-                                    title={service.title}
-                                    description={service.description}
-                                    image={service.image}
-                            />
-                        })}
+                    {services.map((service)=> {
+                        return <ServiceInfo key={service.id}
+                                id={service.id}
+                                title={service.title}
+                                description={service.description}
+                                image={service.image}
+                        />
+                    })}
                     </div>
                 </div>
             </div>

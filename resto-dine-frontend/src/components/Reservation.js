@@ -4,16 +4,19 @@ export default function Reservation() {
     return (
         <div className="booking_table">
         <br/>
-            <div className="container">
-                <div className="section-header mb-3">
-                    <h2>Book Your Table</h2>
+            <div className="bg-img-reservation">
+                <div className="section-header reservation_info text-center text-white mb-3">
+                    <span className="reservation_title">Book Your Table</span>
                     <div className="asset">
                         <span></span>
                         <img src="/img/assets/spoon.png" alt="Spoon icon"/>
                         <span></span>
                     </div>
+                    <p className="sub-title text-center">Resto Dine provides table reservation in advance so that customer don't have to wait anymore.</p>
                 </div>
-                <div className="row mb-3">
+            </div>
+            <div className="container">
+                <div className="row mt-4 mb-3">
                     <div className="col-md-12">
                         <div className="table_title text-center">
                             <h2 className="text-center"><i>Reservation</i></h2>
