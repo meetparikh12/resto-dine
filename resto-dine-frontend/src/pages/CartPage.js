@@ -17,7 +17,7 @@ export default function CartPage() {
                 </div>
             </div>
             <div className="container">
-                <table className="table table-striped table-responsive">
+                <table className="table table-striped table-res">
                     <thead>
                         <tr>
                             <th>Item</th>
