@@ -13,7 +13,7 @@ class NavLinks extends React.Component {
             </li>
 
             <li>
-                <NavLink to="/login" style={{textDecoration: "none"}} exact>FOOD ITEMS</NavLink>
+                <NavLink to="/food-products" style={{textDecoration: "none"}} exact>FOOD ITEMS</NavLink>
             </li>
            
             <li>

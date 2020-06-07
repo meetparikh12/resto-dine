@@ -1,5 +1,6 @@
 import React from 'react'
 import './Banner.css';
+import { Link } from 'react-router-dom';
 
 export default function Banner() {
     return (
@@ -9,7 +10,7 @@ export default function Banner() {
                 <div className="overlay-content">
                     <h5>Yummy and Delicious</h5>
                     <h1>Tasty</h1>
-                    <button className="btn"> Discover menu </button>
+                    <Link to="/menu"><button className="btn" style={{cursor: "pointer"}}> Discover menu </button></Link>
                 </div>
             </div>
         </div>

@@ -1,17 +1,12 @@
-.banner {
+.food_product {
     height: 38rem;
     width: 100%;
     position: relative;
     margin-top: -63px;
 }
-.bg-img{
-    background-image: url("/img/banner/banner-image.jpg");
-    /* height: 100vh; */
-    /* padding-top: 56%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover; */ 
 
+.food_product .bg-img {
+    background-image: url("/img/banner/food_product_banner.jpg");
     position: absolute;
     top: 0;
     right: 0;
@@ -24,7 +19,7 @@
     background-repeat: no-repeat;
 }
 
-.overlay-bg{
+.overlay-bg {
     background: rgba(0, 0, 0, 0.5);
     position: absolute;
     top: 0;
@@ -34,29 +29,37 @@
     z-index: -1;
 }
 
-.banner .overlay-content {
+.food_product .overlay-content {
     position: absolute;
     text-align: center;
     width: 100%;
-    top: 40%;
+    top: 48%;
     color: #FFFFFF;
-    text-transform: uppercase;
     padding: 0 2rem;
 }
-.banner .overlay-content h5 {
-    letter-spacing: 1px;
-    font-weight: 400;
-    color: #f7f7f7;
-    line-height: 1.7rem;
-    font-size: 1.25rem;
-}
-.banner .overlay-content h1 {
-     font-weight: 900;
-     font-size: 52px;
-     letter-spacing: 1px;
+
+.food_product .overlay-content .primary_heading{
+    font-family: "Pinyon Script", serif;
+    color: #FFA33E;
+    margin: 0;
+    padding: 0;
+    font-size: 80px;
 }
 
-.banner .overlay-content .btn {
+.food_product .overlay-content .secondary_heading {
+     text-transform: uppercase;
+     color: #fff;
+     margin: 0;
+     padding: 0;
+     letter-spacing: 0.2rem;
+     font-size: 50px;
+     position: relative;
+     top: -42px;
+     font-weight: 700;
+     line-height: 40px;
+ }
+
+.food_product .overlay-content .btn {
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid #FFFFFF;
     margin: 1rem;
@@ -66,10 +69,11 @@
 }
 
 @media screen and (max-width: 575px) {
-    .banner {
+    .food_product {
         height: 30rem !important;
     }
-    .banner .overlay-content .btn {
+
+    .food_product .overlay-content .btn {
         padding: 2%;
     }
 }
