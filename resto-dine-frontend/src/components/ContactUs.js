@@ -18,19 +18,19 @@ export default function ContactUs() {
             <div className="container mt-5 mb-5" style={{maxWidth: "575px"}}>
                 <form>
                     <div className="form-group">
-                        <label for="c_name" className="font-weight-light">Your Name</label>
+                        <label htmlFor="c_name" className="font-weight-light">Your Name</label>
                         <div className="form-field">
                         <input type="text" id="c_name" className="form-control"/>
                         </div>
                     </div>
                     <div className="form-group">
-                        <label for="c_email" className="font-weight-light">Your Email</label>
+                        <label htmlFor="c_email" className="font-weight-light">Your Email</label>
                         <div className="form-field">
                         <input type="text" id="c_email" className="form-control"/>
                         </div>
                     </div>
                     <div className="form-group">
-                        <label for="c_message" className="font-weight-light">Your Message</label>
+                        <label htmlFor="c_message" className="font-weight-light">Your Message</label>
                         <div className="form-field">
                         <textarea name="c_message" id="c_message" cols="30" rows="6" className="form-control"></textarea>
                         </div>

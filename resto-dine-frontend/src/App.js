@@ -5,6 +5,7 @@ import MainNavigation from './shared/components/Navigation/MainNavigation';
 import Landing from './pages/Landing';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FoodProduct from './pages/FoodProduct';
+import SingleProduct from './pages/SingleProduct';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <MainNavigation/>
           <Route exact path="/" component={Landing}/>
           <Route exact path="/food-products" component={FoodProduct}/>
+          <Route exact path="/food-item/:foodId" component={SingleProduct}/>
 
       </Router>
   );

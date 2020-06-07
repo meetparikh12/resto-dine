@@ -32,7 +32,7 @@ export default function Menu() {
         <div className="menu">
                 <div className="bg-img-menu">
                     <div className="section-header menu_info text-white">
-                        <span class="menu_title">Menu</span>
+                        <span className="menu_title">Menu</span>
                         <div className="asset">
                             <span></span>
                             <img src="/img/assets/spoon.png" alt="Spoon icon"/>
