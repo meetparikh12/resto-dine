@@ -43,7 +43,7 @@
     color: #FFA33E;
     margin: 0;
     padding: 0;
-    font-size: 80px;
+    font-size: 90px;
 }
 
 .food_product .overlay-content .secondary_heading {
@@ -52,28 +52,18 @@
      margin: 0;
      padding: 0;
      letter-spacing: 0.2rem;
-     font-size: 50px;
+     font-size: 60px;
      position: relative;
      top: -42px;
      font-weight: 700;
      line-height: 40px;
  }
 
-.food_product .overlay-content .btn {
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid #FFFFFF;
-    margin: 1rem;
-    color: #fff;
-    padding: 1%;
-    text-transform: uppercase;
-}
-
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 400px) {
     .food_product {
         height: 30rem !important;
     }
-
-    .food_product .overlay-content .btn {
-        padding: 2%;
+    .food_product .overlay-content {
+        top: 44%;
     }
 }
