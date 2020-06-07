@@ -7,7 +7,7 @@ export default function CartItem(props) {
             <td>{props.name}</td>
             <td>{props.quantity}</td>
             <td>{props.price}/-</td>
-            <td>{props.price}/-</td>
+            <td>{props.price * props.quantity}/-</td>
             <td className="text-center"><i className="far fa-times-circle text-danger"></i></td>
         </tr>
     )
