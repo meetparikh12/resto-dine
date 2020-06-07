@@ -24,10 +24,10 @@ export default function CartPage() {
                             <tr>
                                 <th>Item</th>
                                 <th>Name</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
-                                <th>Total</th>
-                                <th>Action</th>
+                                <th className="text-center">Quantity</th>
+                                <th className="text-center">Price</th>
+                                <th className="text-center">Total</th>
+                                <th className="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
