@@ -18,7 +18,11 @@ class NavLinks extends React.Component {
            
             <li>
                 <NavLink to="/register" style={{textDecoration: "none"}}>MENU LIST</NavLink>
-            </li>                     
+            </li>    
+
+            <li>
+                <NavLink to="/cart" style={{textDecoration: "none"}}>MY CART</NavLink>
+            </li>                 
 
         </ul>
         )

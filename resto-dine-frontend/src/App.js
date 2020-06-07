@@ -6,6 +6,7 @@ import Landing from './pages/Landing';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FoodProduct from './pages/FoodProduct';
 import SingleProduct from './pages/SingleProduct';
+import CartPage from './pages/CartPage';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
           <Route exact path="/" component={Landing}/>
           <Route exact path="/food-products" component={FoodProduct}/>
           <Route exact path="/food-item/:foodId" component={SingleProduct}/>
-
+          <Route exact path="/cart" component={CartPage}/>
       </Router>
   );
 }
