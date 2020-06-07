@@ -87,6 +87,7 @@ export default function FoodProduct() {
                     )}
                 </div>
             </div>
+            
             <Footer/>
         </React.Fragment>
     )

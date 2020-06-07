@@ -43,7 +43,7 @@ export default function SingleProduct(props) {
                     </div>
                 </div>
             </div>
-            <div className="container mb-4">
+            <div className="container mb-5">
                 <div className="row">
                     <div className="col-md-6">
                         <img className="img-fluid img-style" src={food_product.image} alt="Food post"/>

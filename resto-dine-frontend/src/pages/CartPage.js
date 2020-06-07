@@ -8,7 +8,7 @@ export default function CartPage() {
 
     return (
         <React.Fragment>
-            <div className="cart">
+            <div className="cart mb-5">
                 <div className="cart_products_banner mb-5">
                     <div className="bg-img">
                         <div className="overlay-bg"></div>
