@@ -50,6 +50,7 @@
 }
 .img-style {
     height: 31rem;
+    border-radius: 0.5rem;
 }
 .wrapper .btn-cart {
     background: #1a1919;
