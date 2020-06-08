@@ -4,8 +4,9 @@ import Cookie from 'js-cookie'
 import './CartPage.css'
 import Footer from '../components/Footer';
 export default function CartPage() {
-    const food_item = Cookie.getJSON("food-item");
 
+    const food_item = Cookie.getJSON("food-item") || [];
+    
     return (
         <React.Fragment>
             <div className="cart mb-5">
@@ -31,12 +32,17 @@ export default function CartPage() {
                             </tr>
                         </thead>
                         <tbody>
-                            <CartItem key={food_item.foodId}
-                            name={food_item.name}
-                            image = {food_item.image}
-                            price = {food_item.price}
-                            quantity = {food_item.quantity}
-                        />
+                            {food_item.map((product => {
+                                return <CartItem key={product.foodId}
+                                name={product.name}
+                                image = {product.image}
+                                price = {product.price}
+                                quantity = {product.quantity}
+                                totalCost = {product.totalCost}
+                                />
+                                }))
+                            }
+                        
                         </tbody>
                     </table>
                 </div>

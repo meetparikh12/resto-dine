@@ -2,7 +2,11 @@ import React, { useState } from 'react'
 import './SingleProduct.css'
 import Footer from '../components/Footer'
 import Cookie from 'js-cookie'
-export default function SingleProduct(props) {
+import { connect } from 'react-redux';
+import { addToCart } from '../actions/actions';
+import { store } from '../store/store';
+
+function SingleProduct(props) {
 
     const [quantity, setQuantity] = useState(1);
     const food_product = {};
@@ -26,11 +30,9 @@ export default function SingleProduct(props) {
     const addToCartHandler = () => {
         const {name, image, price} = food_product
         const food_item = {
-            name, image, price, quantity,foodId
+            name, image, price, quantity,foodId, totalCost : price * quantity
         }
-        Cookie.set("food-item", JSON.stringify(food_item));
-        props.history.push('/cart');
-
+        props.addItemToCart(food_item, props.history)
     }
 
     return (
@@ -70,3 +72,14 @@ export default function SingleProduct(props) {
         </React.Fragment>
     )
 }
+const mapDispatchToProps = dispatchEvent => {
+    return {
+        addItemToCart : (product, history) => {
+            dispatchEvent(addToCart(product))
+            const {cart} = store.getState();
+            Cookie.set("food-item", JSON.stringify(cart.cartProduct));
+            history.push('/cart');
+        }   
+    }
+}
+export default connect(null, mapDispatchToProps)(SingleProduct);
