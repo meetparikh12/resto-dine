@@ -1,11 +1,24 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import CartItem from '../components/CartItem'
 import Cookie from 'js-cookie'
 import './CartPage.css'
 import Footer from '../components/Footer';
-export default function CartPage() {
-
+import { connect } from 'react-redux';
+function CartPage(props) {
+    
+    const [subTotal, setSubTotal] = useState(0);
     const food_item = Cookie.getJSON("food-item") || [];
+    useEffect(() => {
+        let product;
+        if(props.cart.length !== 0) {
+                product = props.cart
+            let totalPrice = 0;
+            product.forEach((item)=> {
+                totalPrice += totalPrice = item.totalCost
+            })
+            setSubTotal(totalPrice);
+        }
+    }, [props.cart])
     
     return (
         <React.Fragment>
@@ -45,9 +58,29 @@ export default function CartPage() {
                         
                         </tbody>
                     </table>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="card" style={{width: "18rem", margin: "2% auto", float: "right"}}>
+                                <div className="card-body">
+                                    <h5 className="card-title">Subtotal: {subTotal}/- INR</h5>
+                                    <button type="button" style={{color: "white", backgroundColor: "#C81912"}} className="btn text-uppercase font-weight-light">Proceed To Checkout</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <Footer/>
         </React.Fragment>
     )
 }
+
+CartPage.defaultProps = {
+    cart: []
+}
+const mapStateToprops = state => {
+    return {
+        cart: state.cart.cartProduct
+    }
+}
+export default connect(mapStateToprops, null)(CartPage);
