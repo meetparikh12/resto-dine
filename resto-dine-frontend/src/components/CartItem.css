@@ -4,6 +4,9 @@
     width: 50%;
 }
 
+.remove-item-icon {
+    cursor: pointer
+}
 @media screen and (max-width: 767px){
     .cart-img-style {
         height: 100px;

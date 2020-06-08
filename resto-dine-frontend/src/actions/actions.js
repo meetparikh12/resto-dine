@@ -6,3 +6,10 @@ export const addToCart = (product) => {
         payload: product
     }
 }
+
+export const removeFromCart = (productId) => {
+    return {
+        type: actionTypes.REMOVE_FROM_CART,
+        payload: productId
+    }
+}
