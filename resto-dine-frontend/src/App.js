@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import FoodProduct from './pages/FoodProduct';
 import SingleProduct from './pages/SingleProduct';
 import CartPage from './pages/CartPage';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
           <Route exact path="/food-products" component={FoodProduct}/>
           <Route exact path="/food-item/:foodId" component={SingleProduct}/>
           <Route exact path="/cart" component={CartPage}/>
+          <Route exact path="/login" component={Login}/>
+          
       </Router>
   );
 }

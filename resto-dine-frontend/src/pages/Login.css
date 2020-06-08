@@ -1,0 +1,126 @@
+.form-wrapper {
+    margin: -64px 0 -20px 0;
+    padding: 74px 0 2rem 0;
+    position: relative;
+}
+.form-wrapper .bg-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: -2;
+}
+.form-wrapper .bg-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+.form-wrapper .form-content {
+    width: 30rem;
+    max-width: 94%;
+    background: rgba(0, 0, 0, 0.2);
+    margin: 11% auto 10% auto;
+    padding: 1rem 2rem 3rem;
+    border-radius: 6px;
+    border: 1px solid #c2c2c2;
+}
+.form-wrapper .form-content .form-group .form-control {
+    border: 1px solid #c2c2c2;
+    border-radius: 6px;
+    height: 46px;
+    font-size: 15px;
+    text-indent: 10px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #f0f0f0;
+    margin-bottom: 16px;
+}
+.form-wrapper .form-content img {
+    display: block;
+    margin: 0 auto;
+    width: 20px;
+    height: 20px;
+}
+.form-wrapper .form-content .title {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 12px;
+    text-align: center;
+    margin: 1rem 0;
+    color: #C81912;
+}
+.form-wrapper .form-content .form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 3px 3px;
+    color: #e0e0e0;
+}
+.form-control::placeholder {
+    color: #6c757d;
+    opacity: 1;
+}
+.form-wrapper .form-content .btn-submit {
+    background: #C81912 !important;
+    margin-top: 1.4rem !important;
+}
+
+.form-wrapper .form-content .btn {
+    margin: 0;
+    margin-top: 0px;
+}
+.form-wrapper .form-content .or {
+    text-align: center;
+    margin: 1.5rem 0;
+    color: #e0e0e0;
+    letter-spacing: 1px;
+    font-size: 15px;
+}
+.form-wrapper .form-content .or span {
+    display: inline-block;
+    border-bottom: 1px solid #e0e0e0;
+    width: 32rem;
+    max-width: 30%;
+    margin: 0 8px 5px;
+}
+.form-wrapper .form-content .btn {
+    margin: 0;
+    border-radius: 6px;
+}
+.btn-login {
+    background: black !important;
+}
+.btn-login:hover {
+    background-color: #4abde8;
+}
+.btn.btn-block {
+    margin: inherit;
+}
+.btn:hover, .btn:active, .btn:focus {
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    outline: 0;
+}
+
+.btn:hover, .btn:focus {
+    text-decoration: none;
+}
+.btn, a {
+    cursor: pointer;
+}
+
+.forget-pass {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 753px){
+    .form-wrapper .form-content{
+        margin: 16% auto 10% auto;
+    }
+}
+
+@media screen and (max-width: 515px) {
+    .form-wrapper .form-content {
+        margin: 25% auto 10% auto;
+    }
+}

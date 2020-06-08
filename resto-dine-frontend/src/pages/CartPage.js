@@ -19,6 +19,8 @@ function CartPage(props) {
                 totalPrice += totalPrice = item.totalCost
             })
             setSubTotal(totalPrice);
+        } else {
+            setSubTotal(0);
         }
     }, [props.cart])
     
