@@ -13,3 +13,17 @@ export const removeFromCart = (productId) => {
         payload: productId
     }
 }
+
+export const addShippingDetails = (shippingDetails) => {
+    return {
+        type: actionTypes.ADD_SHIPPING_DETAILS,
+        payload: shippingDetails
+    }
+}
+
+export const addPaymentMethod = (paymentMethod) => {
+    return {
+        type: actionTypes.ADD_PAYMENT_METHOD,
+        payload: paymentMethod
+    }
+}
