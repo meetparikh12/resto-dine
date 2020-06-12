@@ -76,7 +76,7 @@ class Shipping extends Component {
                                     value={this.state.postalCode}  placeholder="Your postal-code"/>
                                 </div>
                                 
-                                <input type="submit" value="Continue" className="btn btn-danger text-uppercase font-weight-lighter btn-block mt-4" style={{backgroundColor: "#C81912"}} />
+                                <input type="submit" value="Continue" className="btn text-white text-uppercase font-weight-lighter btn-block mt-4" style={{backgroundColor: "#C81912"}} />
                             </form>
                         </div>
                     </div>    
