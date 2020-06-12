@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { addShippingDetails } from '../../actions/actions';
+import { addShippingDetails } from '../actions/actions';
 import { connect } from 'react-redux';
 import Cookie from 'js-cookie';
-
+import './Shipping.css'
+import Footer from '../components/Footer';
 class Shipping extends Component {
     constructor(props){
         super(props);
@@ -17,7 +18,7 @@ class Shipping extends Component {
     }
 
     componentDidMount(){
-        const cartItems = Cookie.getJSON("cartItems");
+        const cartItems = Cookie.getJSON("food-item");
         if(!(!!cartItems) || cartItems.length === 0){
             this.props.history.push('/cart');
         } 
@@ -38,38 +39,50 @@ class Shipping extends Component {
     }
     render() {
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-8 m-auto" >
-                        <h4 className="display-4 text-center" style={{marginTop: "2%"}}>Shipping Details</h4>
-                        <br/>
-                        <form onSubmit={this.submitFormHandler}>
-                            <div className="form-group">
-                                <input type="text" required onChange={this.fieldChangeHandler} className="form-control form-control-lg" name="address" 
-                                value={this.state.address} placeholder="Your address"/>
+            <React.Fragment>
+                <div className="shipping mb-5">
+                    <div className="shipping_page mb-5">
+                        <div className="bg-img">
+                            <div className="overlay-bg"></div>
+                            <div className="overlay-content">
+                                <h2 className="primary_heading">Shipping Page</h2>
+                                <h3 className="secondary_heading">Your Details</h3>
                             </div>
-                            
-                            <div className="form-group">
-                                <input type="text" required onChange={this.fieldChangeHandler} className="form-control form-control-lg"
-                                name="city" 
-                                value={this.state.city}  placeholder="Your city"/>
-                            </div>
-                            <div className="form-group">
-                                <input type="text" required onChange={this.fieldChangeHandler} className="form-control form-control-lg"
-                                name="country" 
-                                value={this.state.country}  placeholder="Your country"/>
-                            </div>
-                            <div className="form-group">
-                                <input type="text" required onChange={this.fieldChangeHandler} className="form-control form-control-lg"
-                                name="postalCode" 
-                                value={this.state.postalCode}  placeholder="Your postal-code"/>
-                            </div>
-                            
-                            <input type="submit" value="Continue" className="btn btn-warning btn-block mt-4" />
-                        </form>
+                        </div>
                     </div>
-                </div>    
-            </div>
+                </div>
+                <div className="container mb-5">
+                    <div className="row">
+                        <div className="col-md-8 m-auto" >
+                            <form onSubmit={this.submitFormHandler}>
+                                <div className="form-group">
+                                    <input type="text" required onChange={this.fieldChangeHandler} className="form-control form-control-lg" name="address" 
+                                    value={this.state.address} placeholder="Your address"/>
+                                </div>
+                                
+                                <div className="form-group">
+                                    <input type="text" required onChange={this.fieldChangeHandler} className="form-control form-control-lg"
+                                    name="city" 
+                                    value={this.state.city}  placeholder="Your city"/>
+                                </div>
+                                <div className="form-group">
+                                    <input type="text" required onChange={this.fieldChangeHandler} className="form-control form-control-lg"
+                                    name="country" 
+                                    value={this.state.country}  placeholder="Your country"/>
+                                </div>
+                                <div className="form-group">
+                                    <input type="text" required onChange={this.fieldChangeHandler} className="form-control form-control-lg"
+                                    name="postalCode" 
+                                    value={this.state.postalCode}  placeholder="Your postal-code"/>
+                                </div>
+                                
+                                <input type="submit" value="Continue" className="btn btn-danger text-uppercase font-weight-lighter btn-block mt-4" style={{backgroundColor: "#C81912"}} />
+                            </form>
+                        </div>
+                    </div>    
+                </div>
+                <Footer/>
+            </React.Fragment>
         )
     }
 }

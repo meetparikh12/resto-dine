@@ -68,7 +68,7 @@ function CartPage(props) {
                             <div className="card checkout-box" style={{width: "18rem", margin: "2% auto"}}>
                                 <div className="card-body">
                                     <h5 className="card-title font-weight-light">Subtotal: {subTotal}/- INR</h5>
-                                    <button type="button" className="btn mb-2 checkout-btn text-uppercase font-weight-light">Proceed To Checkout</button>
+                                    <Link to="/shipping" ><button type="button" className="btn mb-2 checkout-btn text-uppercase font-weight-light">Proceed To Checkout</button></Link>
                                     <Link to="/food-products"><button type="button" className="btn shopping-btn text-uppercase font-weight-light">Continue Shopping</button></Link>
                                 </div>
                             </div>

@@ -8,6 +8,7 @@ import FoodProduct from './pages/FoodProduct';
 import SingleProduct from './pages/SingleProduct';
 import CartPage from './pages/CartPage';
 import Login from './pages/Login';
+import Shipping from './pages/Shipping';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           <Route exact path="/food-item/:foodId" component={SingleProduct}/>
           <Route exact path="/cart" component={CartPage}/>
           <Route exact path="/login" component={Login}/>
-          
+          <Route exact path="/shipping" component={Shipping}/>
       </Router>
   );
 }
