@@ -127,7 +127,6 @@ function PlaceOrder(props){
                     </div>
                     <div className="col-lg-4" style={{margin: "2% 0", padding: "0%"}}>
                         <div className="card" style={{"width": "18rem", margin: "auto" }}>
-                            <button onClick={placeOrderHandler} className="btn btn-warning">Place Order</button>
                             <div className="card-body">
                                 <h5 className="card-title"><b>Order Summary</b></h5>
                                 <p className="card-text">Your Order: {subTotal}/- INR</p>
@@ -135,6 +134,7 @@ function PlaceOrder(props){
                                 <p className="card-text">Tax: {taxPrice}/- INR</p>
                                 <h5 style={{color: "crimson"}} className="card-title">Total: {totalPrice}/- INR</h5>
                             </div>
+                            <button onClick={placeOrderHandler} className="btn text-uppercase w-50 text-white font-weight-lighter btn-block mb-3" style={{backgroundColor: "#C81912"}}>Place Order</button>      
                         </div>
                     </div>
                 </div>
