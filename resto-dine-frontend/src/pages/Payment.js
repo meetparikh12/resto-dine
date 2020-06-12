@@ -81,7 +81,7 @@ const mapDispatchToProps = dispatchEvent => {
     return {
         addPaymentMethod: (method, history) => {
             dispatchEvent(addPaymentMethod(method));
-            history.push('/placeorder');
+            history.push('/place-order');
         }
     }
 }

@@ -10,7 +10,7 @@ import CartPage from './pages/CartPage';
 import Login from './pages/Login';
 import Shipping from './pages/Shipping';
 import Payment from './pages/Payment';
-
+import PlaceOrder from './pages/PlaceOrder';
 function App() {
   return (
       <Router>        
@@ -22,6 +22,7 @@ function App() {
           <Route exact path="/login" component={Login}/>
           <Route exact path="/shipping" component={Shipping}/>
           <Route exact path="/payment" component={Payment}/>
+          <Route exact path="/place-order" component={PlaceOrder}/>
       </Router>
   );
 }

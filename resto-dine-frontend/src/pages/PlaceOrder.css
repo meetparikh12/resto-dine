@@ -1,0 +1,174 @@
+.order_page {
+    height: 38rem;
+    width: 100%;
+    position: relative;
+    margin-top: -63px;
+}
+
+.order_page .bg-img {
+    background-image: url("/img/banner/food_product_banner.jpg");
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-height: 100%;
+    width: 100%;
+    z-index: -1;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.overlay-bg {
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+
+.order_page .overlay-content {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 48%;
+    color: #FFFFFF;
+    padding: 0 2rem;
+}
+
+.order_page .overlay-content .primary_heading {
+    font-family: "Pinyon Script", serif;
+    color: #FFA33E;
+    margin: 0;
+    padding: 0;
+    font-size: 90px;
+}
+
+.order_page .overlay-content .secondary_heading {
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0.2rem;
+    font-size: 60px;
+    position: relative;
+    top: -42px;
+    font-weight: 700;
+    line-height: 40px;
+}
+
+@media screen and (max-width: 793px) {
+    .order_page .overlay-content .primary_heading {
+        font-size: 80px;
+    }
+
+    .order_page .overlay-content .secondary_heading {
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width: 552px) {
+    .order_page .overlay-content .primary_heading {
+        font-size: 80px;
+    }
+
+    .order_page .overlay-content .secondary_heading {
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width: 499px) {
+    .order_page .overlay-content .primary_heading {
+        font-size: 80px;
+    }
+
+    .order_page .overlay-content .secondary_heading {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 458px) {
+    .order_page .overlay-content .primary_heading {
+        font-size: 80px;
+    }
+
+    .order_page .overlay-content .secondary_heading {
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 445px) {
+    .order_page .overlay-content .primary_heading {
+        font-size: 65px;
+    }
+
+    .order_page .overlay-content .secondary_heading {
+        font-size: 35px;
+    }
+}
+
+@media screen and (max-width: 418px) {
+    .order_page .overlay-content {
+        top: 50%;
+    }
+
+    .order_page .overlay-content .primary_heading {
+        font-size: 60px;
+    }
+
+    .order_page .overlay-content .secondary_heading {
+        font-size: 25px;
+        top: -38px;
+    }
+}
+
+@media screen and (max-width: 403px) {
+    .order_page {
+        height: 30rem !important;
+    }
+
+    .order_page .overlay-content {
+        top: 52%;
+    }
+
+    .order_page .overlay-content .primary_heading {
+        font-size: 60px;
+    }
+
+    .order_page .overlay-content .secondary_heading {
+        font-size: 20px;
+        top: -39px;
+    }
+}
+
+@media screen and (max-width: 389px) {
+    .order_page .overlay-content {
+        top: 50%;
+    }
+
+    .order_page .overlay-content .primary_heading {
+        font-size: 70px;
+    }
+
+    .order_page .overlay-content .secondary_heading {
+        font-size: 20px;
+        top: -42px;
+    }
+}
+
+@media screen and (max-width: 362px) {
+    .order_page .overlay-content {
+        top: 50%;
+    }
+
+    .order_page .overlay-content .primary_heading {
+        font-size: 70px;
+    }
+
+    .order_page .overlay-content .secondary_heading {
+        font-size: 20px;
+        top: -42px;
+    }
+}
