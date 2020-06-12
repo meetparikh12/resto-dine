@@ -7,6 +7,8 @@ import Cookie from 'js-cookie';
 // import config from 'react-global-configuration';
 import OrderItem from '../components/OrderItem';
 import './PlaceOrder.css';
+import { addOrderDetails } from '../actions/actions';
+import Footer from '../components/Footer';
 
 function PlaceOrder(props){
     
@@ -59,6 +61,8 @@ function PlaceOrder(props){
             totalPrice,
             orderItems
         }
+        props.addOrderDetails(orderDetails, props.history);
+
         // Axios.post(`${config.get('backend_url_orders')}`, orderDetails)
         // .then((res)=> {
         //     alert('Thank you for Shopping. Your Order ID is: ' +res.data.order._id);
@@ -139,6 +143,7 @@ function PlaceOrder(props){
                     </div>
                 </div>
             </div>
+            <Footer/>
         </React.Fragment>
     )
 }
@@ -155,4 +160,12 @@ const mapStateToProps = state => {
         cart: state.cart.cartProduct
     }
 }
-export default connect(mapStateToProps,null)(PlaceOrder);
+const mapDispatchToProps = dispatchEvent => {
+    return {
+        addOrderDetails : (orderDetails, history) => {
+            dispatchEvent(addOrderDetails(orderDetails))
+            history.push("/order")
+        }
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(PlaceOrder);

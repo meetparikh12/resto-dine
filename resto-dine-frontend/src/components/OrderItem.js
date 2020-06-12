@@ -10,7 +10,7 @@ export default function OrderItem(props) {
                     </div>
                     <div className="col-lg-8 col-md-8 pl-4">
                         <h6>{props.item.name}</h6>
-                        <p>Quantity: {props.item.quantityOrdered}</p>
+                        <p>Quantity: {props.item.quantity}</p>
                     </div>
                     <div className="col-lg-2 col-md-2 pl-4">
                         <p>{props.item.price}/-</p>

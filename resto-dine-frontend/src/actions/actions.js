@@ -27,3 +27,10 @@ export const addPaymentMethod = (paymentMethod) => {
         payload: paymentMethod
     }
 }
+
+export const addOrderDetails = (orderDetails) => {
+    return {
+        type: actionTypes.ORDER_DETAILS,
+        payload: orderDetails
+    }
+}

@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import Shipping from './pages/Shipping';
 import Payment from './pages/Payment';
 import PlaceOrder from './pages/PlaceOrder';
+import OrderDetail from './pages/OrderDetail';
 function App() {
   return (
       <Router>        
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/shipping" component={Shipping}/>
           <Route exact path="/payment" component={Payment}/>
           <Route exact path="/place-order" component={PlaceOrder}/>
+          <Route exact path="/order" component={OrderDetail}/>
       </Router>
   );
 }
