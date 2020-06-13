@@ -50,4 +50,42 @@ route.get('/', async (req,res,next)=> {
     }
     res.status(200).json({products})
 })
+
+route.get('/:productId', async (req,res,next)=> {
+    const {productId} = req.params;
+    let product;
+    try {
+        product = await Product.findById(productId)
+    }catch(err) {
+        return next(new ErrorHandling('Invalid ID, Please try again', 500))
+    }
+    if(!product) {
+        return next(new ErrorHandling('Food Product not found', 404))
+    }
+    res.status(200).json({foodProduct: product})
+})
+
+route.patch('/:productId', async (req,res,next)=> {
+    const {productId} = req.params;
+    let product;
+    try {
+        product = await Product.findById(productId)
+    }catch(err) {
+        return next(new ErrorHandling('Invalid ID, Please try again', 500))
+    }
+    if(!product) {
+        return next(new ErrorHandling('Food Product not found', 404))
+    }
+    const {name, quantityInStock, price} = req.body;
+    product.name = name;
+    product.quantityInStock = quantityInStock;
+    product.price = price;
+    try {
+        await product.save();
+    } catch(err) {
+        return next(new ErrorHandling('Product not updated', 500))
+    }
+
+    res.status(200).json({product})
+})
 module.exports = route;
