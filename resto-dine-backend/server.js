@@ -7,6 +7,7 @@ const categoryRoute = require('./routes/category')
 const userRoute = require('./routes/users')
 const mongoose = require('mongoose')
 const {mongoURI} = require('./config/key')
+const fs = require('fs')
 
 const port = process.env.PORT || 5000
 
@@ -28,7 +29,15 @@ app.use((req,res,next)=>{
 })
 
 app.use((error,req,res,next)=>{
-    res.status(error.status).json({message: error.message})
+    if(req.file){
+        fs.unlink(req.file.path, (err)=> {
+            err && console.log(err);
+            !err && console.log("File deleted");
+        })
+    }
+    const message = error.message || 'Unknown error occured'
+    const status = error.status || 500
+    res.status(status).json({message})
 })
 
 mongoose.connect(mongoURI, {

@@ -3,25 +3,29 @@ const route = express.Router()
 const ErrorHandling = require('../models/ErrorHandling');
 const ProductCategory = require('../models/ProductCategory');
 const Product = require('../models/Product');
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const fileUpload = require('../middleware/file-upload');
+const fs = require('fs')
 
-route.post('/', async (req,res,next)=> {
+route.post('/', fileUpload.single('image') ,async (req,res,next)=> {
     
-    let {image, categoryIdentifier} = req.body;
+    let {categoryIdentifier} = req.body;
     categoryIdentifier = categoryIdentifier.toUpperCase();
-
     let isCategoryAlreadyInUse;
     try {
-        isCategoryAlreadyInUse = ProductCategory.findOne({categoryIdentifier})
+        isCategoryAlreadyInUse = await ProductCategory.findOne({categoryIdentifier})
     }catch(err){
         return next(new ErrorHandling('Sorry, Please Try again', 500))
     }
     if(isCategoryAlreadyInUse){
         return next(new ErrorHandling('Category already in use', 422))
     }
+    
+    let imageURL = req.file.path;
+    imageURL = imageURL.replace(/\\/g, "/")
 
     const category = new ProductCategory({
-        menuImage: image, categoryIdentifier
+        menuImage: imageURL, categoryIdentifier
     })
     try {
         await category.save()
@@ -79,6 +83,7 @@ route.delete('/:categoryIdentifier', async (req,res,next)=> {
         const session = await mongoose.startSession();
         session.startTransaction();
         await foodCategory.remove({session});
+        removeImage(foodCategory.menuImage);
         await foodCategory.product.map((product)=> product.remove({session}));
         await session.commitTransaction();
     }catch(err){
@@ -86,5 +91,12 @@ route.delete('/:categoryIdentifier', async (req,res,next)=> {
     }
     res.status(200).json({message: 'Food category and all its product deleted successfully'})
 })
+
+const removeImage = imagePath => {
+    fs.unlink(imagePath, (err) => {
+        err && console.log(err);
+        !err && console.log("File deleted along with product");
+    })
+}
 
 module.exports = route;

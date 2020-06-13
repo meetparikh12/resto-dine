@@ -3,9 +3,11 @@ const route = express.Router()
 const ErrorHandling = require('../models/ErrorHandling');
 const Product = require('../models/Product');
 const ProductCategory = require('../models/ProductCategory');
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const fileUpload = require('../middleware/file-upload');
+const fs = require('fs')
 
-route.post('/:categoryIdentifier', async (req,res,next)=> {
+route.post('/:categoryIdentifier', fileUpload.single('image') ,async (req,res,next)=> {
     let {categoryIdentifier} = req.params;
     categoryIdentifier = categoryIdentifier.toUpperCase()
     let foodCategory;
@@ -18,9 +20,12 @@ route.post('/:categoryIdentifier', async (req,res,next)=> {
         return next(new ErrorHandling('Product Category not found', 404))
     }
 
-    const {name, image, quantityInStock, price} = req.body;
+    const {name, quantityInStock, price} = req.body;
+    let imageURL = req.file.path;
+    imageURL = imageURL.replace(/\\/g, "/")
+
     const product = new Product({
-        name, image, price, quantityInStock, category: foodCategory._id
+        name, image: imageURL, price, quantityInStock, category: foodCategory._id
     })
     try {
         const session = await mongoose.startSession()
@@ -105,6 +110,7 @@ route.delete('/:productId', async (req,res,next)=> {
         const session = await mongoose.startSession();
         session.startTransaction();
         await foodProduct.remove({session});
+        removeImage(foodProduct.image);
         await foodProduct.category.product.pull(foodProduct);
         await foodProduct.category.save({session});
         await session.commitTransaction();
@@ -115,4 +121,12 @@ route.delete('/:productId', async (req,res,next)=> {
     res.status(200).json({message: 'Food Product deleted successfully'});
 
 })
+
+const removeImage = imagePath => {
+    fs.unlink(imagePath, (err) => {
+        err && console.log(err);
+        !err && console.log("File deleted along with product");
+    })
+}
+
 module.exports = route;
