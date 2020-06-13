@@ -16,4 +16,20 @@ route.post('/', async (req,res,next)=> {
     res.status(201).json({category})
 })
 
+route.get('/:categoryIdentifier', async (req,res,next)=> {
+    let {categoryIdentifier} = req.params;
+    categoryIdentifier = categoryIdentifier.toUpperCase()
+    let foodCategory;
+    try {
+        foodCategory = await ProductCategory.find({categoryIdentifier}).populate('product')
+    } catch(err){
+        return next(new ErrorHandling('Product Category not fetched', 500))
+    }
+    if(!foodCategory || foodCategory.length === 0) {
+        return next(new ErrorHandling('Product Category not found', 404))
+    }
+    res.status(200).json({foodCategory})
+
+})
+
 module.exports = route;
