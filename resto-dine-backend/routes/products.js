@@ -38,20 +38,16 @@ route.post('/:categoryIdentifier', async (req,res,next)=> {
     res.status(201).json({product})
 })
 
-route.get('/:categoryIdentifier', async (req,res,next)=> {
-    let {categoryIdentifier} = req.params;
-    categoryIdentifier = categoryIdentifier.toUpperCase()
-    let foodCategory;
+route.get('/', async (req,res,next)=> {
+    let products;
     try {
-        foodCategory = await ProductCategory.find({categoryIdentifier})
-    } catch(err){
-        return next(new ErrorHandling('Product Category not fetched', 500))
+        products = await Product.find()
+    } catch(err) {
+        return next(new ErrorHandling('Food Products not fetched', 500))
     }
-    if(!foodCategory) {
-        return next(new ErrorHandling('Product Category not found', 404))
+    if(!products || products.length === 0){
+        return next(new ErrorHandling('No Food Products found', 404))
     }
-    res.status(200).json({foodCategory})
-
+    res.status(200).json({products})
 })
-
 module.exports = route;
