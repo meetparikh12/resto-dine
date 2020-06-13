@@ -18,6 +18,21 @@ route.post('/', async (req,res,next)=> {
     res.status(201).json({category})
 })
 
+route.get('/', async (req,res,next)=> {
+    let categories;
+    try {
+        categories = await ProductCategory.find().select('-product')
+    } catch(err){
+        return next(new ErrorHandling('Food Categories not fetched', 500))
+    }
+    if(categories.length === 0){
+        return next(new ErrorHandling('No food categories found', 404))
+    }
+
+    res.status(200).json({categories});
+
+})
+
 route.get('/:categoryIdentifier', async (req,res,next)=> {
     let {categoryIdentifier} = req.params;
     categoryIdentifier = categoryIdentifier.toUpperCase()
@@ -30,7 +45,7 @@ route.get('/:categoryIdentifier', async (req,res,next)=> {
     if(!foodCategory || foodCategory.length === 0) {
         return next(new ErrorHandling('Food Category not found', 404))
     }
-    res.status(200).json({foodCategory})
+    res.status(200).json({foodProducts: foodCategory})
 
 })
 
@@ -58,4 +73,5 @@ route.delete('/:categoryIdentifier', async (req,res,next)=> {
     }
     res.status(200).json({message: 'Food category and all its product deleted successfully'})
 })
+
 module.exports = route;
