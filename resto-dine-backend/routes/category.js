@@ -6,9 +6,22 @@ const Product = require('../models/Product');
 const mongoose = require('mongoose')
 
 route.post('/', async (req,res,next)=> {
-    const {image, categoryIdentifier} = req.body;
+    
+    let {image, categoryIdentifier} = req.body;
+    categoryIdentifier = categoryIdentifier.toUpperCase();
+
+    let isCategoryAlreadyInUse;
+    try {
+        isCategoryAlreadyInUse = ProductCategory.findOne({categoryIdentifier})
+    }catch(err){
+        return next(new ErrorHandling('Sorry, Please Try again', 500))
+    }
+    if(isCategoryAlreadyInUse){
+        return next(new ErrorHandling('Category already in use', 422))
+    }
+
     const category = new ProductCategory({
-        menuImage: image, categoryIdentifier: categoryIdentifier.toUpperCase()
+        menuImage: image, categoryIdentifier
     })
     try {
         await category.save()
