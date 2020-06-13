@@ -20,12 +20,12 @@ route.post('/:categoryIdentifier', async (req,res,next)=> {
 
     const {name, image, quantityInStock, price} = req.body;
     const product = new Product({
-        name, image, price, quantityInStock
+        name, image, price, quantityInStock, category: foodCategory._id
     })
     try {
         const session = await mongoose.startSession()
         session.startTransaction()
-         await product.save()
+        await product.save()
         await foodCategory.product.unshift(product)
         await foodCategory.save({session})
         await session.commitTransaction()
@@ -87,5 +87,32 @@ route.patch('/:productId', async (req,res,next)=> {
     }
 
     res.status(200).json({product})
+})
+
+route.delete('/:productId', async (req,res,next)=> {
+    const {productId} = req.params;
+    let foodProduct;
+    try {
+        foodProduct = await Product.findById(productId).populate('category')
+    }catch(err) {
+        return next(new ErrorHandling('Invalid ID, Please try again', 500))
+    }
+    if(!foodProduct) {
+        return next(new ErrorHandling('Food Product not found', 404))
+    }
+
+    try{
+        const session = await mongoose.startSession();
+        session.startTransaction();
+        await foodProduct.remove({session});
+        await foodProduct.category.product.pull(foodProduct);
+        await foodProduct.category.save({session});
+        await session.commitTransaction();
+    }catch(err){
+        return next(new ErrorHandling('Food Product not deleted', 500))
+    }   
+
+    res.status(200).json({message: 'Food Product deleted successfully'});
+
 })
 module.exports = route;
