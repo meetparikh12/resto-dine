@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const ErrorHandling = require('./models/ErrorHandling')
 const productRoute = require('./routes/products')
 const categoryRoute = require('./routes/category')
+const userRoute = require('./routes/users')
 const mongoose = require('mongoose')
 const {mongoURI} = require('./config/key')
 
@@ -20,6 +21,7 @@ app.use((req,res,next)=> {
 
 app.use('/api/category', categoryRoute)
 app.use('/api/product', productRoute)
+app.use('/api/users', userRoute)
 
 app.use((req,res,next)=>{
     return next(new ErrorHandling('Specified route does not exist', 404))
