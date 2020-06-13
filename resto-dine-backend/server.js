@@ -2,6 +2,10 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const ErrorHandling = require('./models/ErrorHandling')
+const productRoute = require('./routes/products')
+const categoryRoute = require('./routes/category')
+const mongoose = require('mongoose')
+const {mongoURI} = require('./config/key')
 
 const port = process.env.PORT || 5000
 
@@ -14,6 +18,9 @@ app.use((req,res,next)=> {
     next()
 })
 
+app.use('/api/category', categoryRoute)
+app.use('/api/product', productRoute)
+
 app.use((req,res,next)=>{
     return next(new ErrorHandling('Specified route does not exist', 404))
 })
@@ -22,6 +29,17 @@ app.use((error,req,res,next)=>{
     res.status(error.status).json({message: error.message})
 })
 
-app.listen(port, ()=> {
-    console.log("Server started on port: " +port);
+mongoose.connect(mongoURI, {
+    useFindAndModify: false,
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true
+})
+.then(()=> {
+    app.listen(port, () => {
+        console.log("Server started on port: " + port)
+    })
+})
+.catch((err) => {
+    console.log(err)
 })
