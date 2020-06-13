@@ -2,6 +2,8 @@ const express = require('express');
 const User = require('../models/User');
 const ErrorHandling = require('../models/ErrorHandling');
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+const {secretKey} = require('../config/key')
 
 const route = express.Router()
 
@@ -54,6 +56,24 @@ route.post('/login', async (req,res,next)=> {
     if(!isPasswordEqual){
         return next(new ErrorHandling('Invalid Credentials', 403))
     }
-    res.status(200).json({user});
+
+    let token;
+    try {
+        token = jwt.sign(
+            {
+                userId: user._id,
+                email: user.email,
+                isAdmin: user.isAdmin,
+                name: user.name
+            }, 
+            secretKey, 
+            {
+                expiresIn: '1h'
+            }
+        )
+    } catch(err){
+        return next(new ErrorHandling('Not Authorized', 401))
+    }
+    res.status(200).json({token});
 })
 module.exports = route;
