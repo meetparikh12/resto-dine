@@ -19,6 +19,12 @@ const userSchema = new mongoose.Schema({
     },  
     products:[{
         type: mongoose.Schema.Types.ObjectId,
+        ref: 'Product',
+        required: true
+    }], 
+    category: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'ProductCategory',
         required: true
     }]
     

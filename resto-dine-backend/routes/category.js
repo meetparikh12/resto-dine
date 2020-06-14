@@ -6,12 +6,28 @@ const Product = require('../models/Product');
 const mongoose = require('mongoose');
 const fileUpload = require('../middleware/file-upload');
 const fs = require('fs')
+const auth = require('../middleware/auth');
+const User = require('../models/User');
 
-route.post('/', fileUpload.single('image') ,async (req,res,next)=> {
+route.post('/', auth, fileUpload.single('image') ,async (req,res,next)=> {
+    if (!req.user.isAdmin) {
+        return next(new ErrorHandling('Sorry, Not Authorized!!', 401))
+    }
+    let user; 
+    try {
+        user = await User.findOne({email : req.user.email})
+    } catch(err){
+        return next(new ErrorHandling('User not fetched', 500))
+    }
+    if(!user){
+        return next(new ErrorHandling('User not found', 404))
+    }
     
     let {categoryIdentifier} = req.body;
     categoryIdentifier = categoryIdentifier.toUpperCase();
+    
     let isCategoryAlreadyInUse;
+    
     try {
         isCategoryAlreadyInUse = await ProductCategory.findOne({categoryIdentifier})
     }catch(err){
@@ -24,15 +40,21 @@ route.post('/', fileUpload.single('image') ,async (req,res,next)=> {
     let imageURL = req.file.path;
     imageURL = imageURL.replace(/\\/g, "/")
 
-    const category = new ProductCategory({
-        menuImage: imageURL, categoryIdentifier
+    const foodCategory = new ProductCategory({
+        menuImage: imageURL, categoryIdentifier, creator: req.user.userId
     })
     try {
-        await category.save()
+        const session = await mongoose.startSession();
+        session.startTransaction();
+        await foodCategory.save({session});
+        await user.category.unshift(foodCategory);
+        await user.save({session});
+        await session.commitTransaction();
+
     } catch(err) {
         return next(new ErrorHandling('Food Category not created', 500))
     }
-    res.status(201).json({category})
+    res.status(201).json({foodCategory})
 })
 
 route.get('/', async (req,res,next)=> {
@@ -51,6 +73,7 @@ route.get('/', async (req,res,next)=> {
 })
 
 route.get('/:categoryIdentifier', async (req,res,next)=> {
+    
     let {categoryIdentifier} = req.params;
     categoryIdentifier = categoryIdentifier.toUpperCase()
     let foodCategory;
@@ -66,7 +89,22 @@ route.get('/:categoryIdentifier', async (req,res,next)=> {
 
 })
 
-route.delete('/:categoryIdentifier', async (req,res,next)=> {
+route.delete('/:categoryIdentifier', auth, async (req,res,next)=> {
+    if(!req.user.isAdmin) {
+        return next(new ErrorHandling('Sorry, Not Authorized!!', 401))
+    }
+    try{
+        user = await User.findOne({
+            email: req.user.email
+        })
+    } catch (err) {
+        return next(new ErrorHandling('User not fetched', 500))
+    }
+    if(!user) {
+        return next(new ErrorHandling('User not found', 404))
+    }
+
+
     let {categoryIdentifier} = req.params;
     categoryIdentifier = categoryIdentifier.toUpperCase();
     let foodCategory;
@@ -82,6 +120,8 @@ route.delete('/:categoryIdentifier', async (req,res,next)=> {
     try {
         const session = await mongoose.startSession();
         session.startTransaction();
+        await user.category.pull(foodCategory);
+        await user.save({session});
         await foodCategory.remove({session});
         removeImage(foodCategory.menuImage);
         await foodCategory.product.map((product)=> product.remove({session}));

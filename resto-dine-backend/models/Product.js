@@ -4,7 +4,8 @@ const productSchema = new mongoose.Schema({
     quantityInStock: {type: Number, required: true},
     price: {type: Number, required: true},
     image: {type: String, required: true},
-    category: {type: mongoose.Schema.Types.ObjectId, ref: 'ProductCategory', required: true}
+    category: {type: mongoose.Schema.Types.ObjectId, ref: 'ProductCategory', required: true},
+    creator: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}
 })
 
 module.exports = mongoose.model('Product', productSchema);

@@ -6,8 +6,24 @@ const ProductCategory = require('../models/ProductCategory');
 const mongoose = require('mongoose');
 const fileUpload = require('../middleware/file-upload');
 const fs = require('fs')
+const auth = require('../middleware/auth');
+const User = require('../models/User');
 
-route.post('/:categoryIdentifier', fileUpload.single('image') ,async (req,res,next)=> {
+route.post('/:categoryIdentifier', auth, fileUpload.single('image') ,async (req,res,next)=> {
+    
+    if(!req.user.isAdmin){
+        return next(new ErrorHandling('Sorry, not Authorized', 401))
+    }
+    let user;
+    try {
+        user = await User.findOne({email : req.user.email})
+    } catch(err){
+        return next(new ErrorHandling('User not fetched', 500))
+    }
+    if(!user){
+        return next(new ErrorHandling('User not found', 404))
+    }
+
     let {categoryIdentifier} = req.params;
     categoryIdentifier = categoryIdentifier.toUpperCase()
     let foodCategory;
@@ -19,18 +35,20 @@ route.post('/:categoryIdentifier', fileUpload.single('image') ,async (req,res,ne
     if(!foodCategory) {
         return next(new ErrorHandling('Product Category not found', 404))
     }
-
+    
     const {name, quantityInStock, price} = req.body;
     let imageURL = req.file.path;
     imageURL = imageURL.replace(/\\/g, "/")
 
     const product = new Product({
-        name, image: imageURL, price, quantityInStock, category: foodCategory._id
+        name, image: imageURL, price, quantityInStock, category: foodCategory._id, creator: req.user.userId
     })
     try {
         const session = await mongoose.startSession()
         session.startTransaction()
-        await product.save()
+        await product.save({session})
+        await user.products.unshift(product);
+        await user.save({session});
         await foodCategory.product.unshift(product)
         await foodCategory.save({session})
         await session.commitTransaction()
@@ -70,7 +88,8 @@ route.get('/:productId', async (req,res,next)=> {
     res.status(200).json({foodProduct: product})
 })
 
-route.patch('/:productId', async (req,res,next)=> {
+route.patch('/:productId', auth, async (req,res,next)=> {
+    
     const {productId} = req.params;
     let product;
     try {
@@ -80,6 +99,9 @@ route.patch('/:productId', async (req,res,next)=> {
     }
     if(!product) {
         return next(new ErrorHandling('Food Product not found', 404))
+    }
+    if(!req.user.isAdmin || req.user.userId !== product.creator.toString()){
+        return next(new ErrorHandling('Sorry, Not Authorized', 401))
     }
     const {name, quantityInStock, price} = req.body;
     product.name = name;
@@ -94,7 +116,20 @@ route.patch('/:productId', async (req,res,next)=> {
     res.status(200).json({product})
 })
 
-route.delete('/:productId', async (req,res,next)=> {
+route.delete('/:productId', auth, async (req,res,next)=> {
+    if(!req.user.isAdmin){
+        return next(new ErrorHandling('Sorry, not Authorized', 401))
+    }
+    let user;
+    try {
+        user = await User.findOne({email : req.user.email})
+    } catch(err){
+        return next(new ErrorHandling('User not fetched', 500))
+    }
+    if(!user){
+        return next(new ErrorHandling('User not found', 404))
+    }
+
     const {productId} = req.params;
     let foodProduct;
     try {
@@ -109,11 +144,14 @@ route.delete('/:productId', async (req,res,next)=> {
     try{
         const session = await mongoose.startSession();
         session.startTransaction();
+        await user.products.pull(foodProduct);
+        await user.save({session});
         await foodProduct.remove({session});
         removeImage(foodProduct.image);
         await foodProduct.category.product.pull(foodProduct);
         await foodProduct.category.save({session});
         await session.commitTransaction();
+        
     }catch(err){
         return next(new ErrorHandling('Food Product not deleted', 500))
     }   
