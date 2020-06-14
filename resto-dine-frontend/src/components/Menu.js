@@ -9,11 +9,12 @@ toast.configure();
 
 export default function Menu() {
     const [menuItem, setMenuItem] = useState([]);
-
+    const [isLoaded, setIsLoaded] = useState(false);
     useEffect(()=> {
         axios.get("http://localhost:5000/api/category")
         .then((res)=> {
             setMenuItem(res.data.categories);
+            setIsLoaded(true);
         })
         .catch((err)=> {
             toast.error(err.response.data.message,{
@@ -23,6 +24,11 @@ export default function Menu() {
         })
     }, [])
 
+    if(!isLoaded){
+        return <div className="text-center mb-5" style={{margin: "20% auto"}}>
+                <h1>Loading...</h1>
+            </div>
+    }
     return (
         <div className="menu">
                 <div className="bg-img-menu">

@@ -8,11 +8,12 @@ import Footer from '../components/Footer';
 
 export default function MenuPage() {
     const [menuItem, setMenuItem] = useState([]);
-
+    const [isLoaded, setIsLoaded] = useState(false);
     useEffect(()=> {
         axios.get("http://localhost:5000/api/category")
         .then((res)=> {
             setMenuItem(res.data.categories);
+            setIsLoaded(true);
         })
         .catch((err)=> {
             toast.error(err.response.data.message,{
@@ -22,6 +23,11 @@ export default function MenuPage() {
         })
     }, [])
 
+    if(!isLoaded){
+        return <div className="text-center mb-5" style={{margin: "20% auto"}}>
+                <h1>Loading...</h1>
+            </div>
+    }
     return (
         <React.Fragment>
             <div className="menu_page mb-5">
@@ -29,7 +35,7 @@ export default function MenuPage() {
                     <div className="bg-img">
                         <div className="overlay-bg"></div>
                         <div className="overlay-content">
-                            <h2 className="primary_heading">Menu Page</h2>
+                            <h2 className="primary_heading">Discover</h2>
                             <h3 className="secondary_heading">Our Menu</h3>
                         </div>
                     </div>

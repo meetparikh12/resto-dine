@@ -42,6 +42,7 @@ function PlaceOrder(props){
             setIsLoaded(true);
         } else {
             setSubTotal(0);
+            setIsLoaded(true);
         }
     }, [props.cart])
 
