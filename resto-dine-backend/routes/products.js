@@ -53,8 +53,6 @@ route.post('/:categoryIdentifier', auth, fileUpload.single('image') ,async (req,
         await foodCategory.save({session})
         await session.commitTransaction()
     } catch(err) {
-        console.log(err);
-        
         return next(new ErrorHandling('Food Product not created', 500))
     }
 
@@ -154,7 +152,7 @@ route.delete('/:productId', auth, async (req,res,next)=> {
     }catch(err){
         return next(new ErrorHandling('Food Product not deleted', 500))
     }   
-    
+
     removeImage(foodProduct.image);
 
     res.status(200).json({message: 'Food Product deleted successfully'});

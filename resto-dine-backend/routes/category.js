@@ -128,8 +128,6 @@ route.delete('/:categoryIdentifier', auth, async (req,res,next)=> {
         await session.commitTransaction();
         
     }catch(err){
-        console.log(err);
-        
         return next(new ErrorHandling('Food Category not deleted', 500))
     }
     removeImage(foodCategory.menuImage);

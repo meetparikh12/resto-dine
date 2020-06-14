@@ -8,10 +8,12 @@ const userRoute = require('./routes/users')
 const mongoose = require('mongoose')
 const {mongoURI} = require('./config/key')
 const fs = require('fs')
+const path = require('path')
 
 const port = process.env.PORT || 5000
 
 app.use(bodyParser.json())
+
 
 app.use((req,res,next)=> {
     res.setHeader("Access-Control-Allow-Origin", '*');
@@ -20,6 +22,7 @@ app.use((req,res,next)=> {
     next()
 })
 
+app.use('/uploads/images', express.static(path.join(__dirname, 'uploads', 'images')))
 app.use('/api/category', categoryRoute)
 app.use('/api/product', productRoute)
 app.use('/api/users', userRoute)
