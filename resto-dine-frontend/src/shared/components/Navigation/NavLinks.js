@@ -37,7 +37,7 @@ function NavLinks(props) {
             </li>
             
             <li>
-                <NavLink to="/register" style={{textDecoration: "none"}}>MENU LIST</NavLink>
+                <NavLink to="/menu-list" style={{textDecoration: "none"}}>MENU LIST</NavLink>
             </li>    
 
             <li>
