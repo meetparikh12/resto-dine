@@ -120,15 +120,19 @@ route.delete('/:categoryIdentifier', auth, async (req,res,next)=> {
     try {
         const session = await mongoose.startSession();
         session.startTransaction();
-        await user.category.pull(foodCategory);
-        await user.save({session});
         await foodCategory.remove({session});
-        removeImage(foodCategory.menuImage);
         await foodCategory.product.map((product)=> product.remove({session}));
+        await user.category.pull(foodCategory);
+        await user.products.splice(0, user.products.length);
+        await user.save({session});
         await session.commitTransaction();
+        
     }catch(err){
+        console.log(err);
+        
         return next(new ErrorHandling('Food Category not deleted', 500))
     }
+    removeImage(foodCategory.menuImage);
     res.status(200).json({message: 'Food category and all its product deleted successfully'})
 })
 

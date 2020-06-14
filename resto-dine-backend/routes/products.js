@@ -147,14 +147,15 @@ route.delete('/:productId', auth, async (req,res,next)=> {
         await user.products.pull(foodProduct);
         await user.save({session});
         await foodProduct.remove({session});
-        removeImage(foodProduct.image);
         await foodProduct.category.product.pull(foodProduct);
         await foodProduct.category.save({session});
         await session.commitTransaction();
-        
+
     }catch(err){
         return next(new ErrorHandling('Food Product not deleted', 500))
     }   
+    
+    removeImage(foodProduct.image);
 
     res.status(200).json({message: 'Food Product deleted successfully'});
 
