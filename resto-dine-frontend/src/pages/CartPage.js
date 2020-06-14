@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
+import Card from '../shared/components/UIElements/Card';
 function CartPage(props) {
     
     const [subTotal, setSubTotal] = useState(0);
@@ -33,6 +34,7 @@ function CartPage(props) {
             setIsLoaded(true);
         } else {
             setSubTotal(0);
+            setIsLoaded(true);
         }
     }, [props.cart])
     
@@ -40,7 +42,19 @@ function CartPage(props) {
         return <div className="text-center mb-5" style={{margin: "20% auto"}}>
                 <h1>Loading...</h1>
             </div>
-    }
+    } else if(props.cart.length === 0) {
+        return (
+            <div className="container"> 
+                <div className="row">
+                <div className="col-md-12">
+                <Card style={{width: "max-content", margin:"30% auto"}}>
+                    <h4><i className="fa fa-shopping-cart" aria-hidden="true"></i> Sorry, Your Cart is empty.</h4>
+                    <Link to="/food-products"><button type="button" className="btn mt-2 shopping-btn text-uppercase font-weight-light">Continue Shopping</button></Link>
+                </Card>  
+                </div>
+                </div>
+            </div> 
+    )}
     return (
         <React.Fragment>
             <div className="cart mb-5">

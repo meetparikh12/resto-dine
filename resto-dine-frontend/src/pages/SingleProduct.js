@@ -12,12 +12,14 @@ function SingleProduct(props) {
 
     const [quantity, setQuantity] = useState(1);
     const [foodProduct, setFoodProduct] = useState({})
-    
+    const [isLoaded, setIsLoaded] = useState(false);
+
     useEffect(()=> {
         const foodId = props.match.params.foodId;
         axios.get('http://localhost:5000/api/product/' +foodId)
         .then((res)=> {
             setFoodProduct(res.data.foodProduct)
+            setIsLoaded(true);
         })
         .catch((err)=> {
             toast.error(err.response.data.message, {
@@ -32,6 +34,18 @@ function SingleProduct(props) {
     }
 
     const addToCartHandler = () => {
+        const cartItems = Cookie.getJSON("food-item");
+        let isItemInCart;
+        if (!(!!cartItems)) {
+            isItemInCart = false
+        } else {
+            isItemInCart = cartItems.find((item) => item.foodId === foodProduct._id);
+        }
+        if (isItemInCart) {
+            alert('This item is already in your cart.');
+            props.history.push('/cart')
+            return;
+        }
         const {name, image, price, _id} = foodProduct
         const food_item = {
             name, image, price, quantity, foodId: _id, totalCost : price * quantity
@@ -39,6 +53,11 @@ function SingleProduct(props) {
         props.addItemToCart(food_item, props.history)
     }
 
+    if(!isLoaded){
+        return <div className="text-center mb-5" style={{margin: "20% auto"}}>
+                <h1>Loading...</h1>
+            </div>
+    }
     return (
         <React.Fragment>
             <div className="single_product mb-5">

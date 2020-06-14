@@ -44,6 +44,8 @@ class OrderDetail extends Component {
             })
         })
         .catch((err)=> {
+            console.log(err);
+            
             toast.error(err.response.data.message, {
                 position: toast.POSITION.BOTTOM_RIGHT,
                 autoClose: 2000
@@ -53,31 +55,29 @@ class OrderDetail extends Component {
 
     handleToken(token){
     
-        // const {totalPrice} = this.state;
-        // const {orderId} = this.props.match.params;
+        const {totalPrice} = this.state;
+        const {orderId} = this.props.match.params;
 
-         
-
-        // Axios.patch(`${config.get('backend_url_orders')}/${orderId}/pay`, {
-        //     token,
-        //     totalPrice
-        // })
-        // .then((res)=> {
-        //     toast.success('Payment '+res.data.status +'!', {
-        //         position: toast.POSITION.BOTTOM_RIGHT,
-        //         autoClose: 2000
-        //     })
-        //     this.props.history.push('/orders');
-        //     this.setState({
-        //         isPaid: !this.state.isPaid
-        //     })
-        // })
-        // .catch((err)=> {
-        //     toast.error(err.response.data.message, {
-        //         position: toast.POSITION.BOTTOM_RIGHT,
-        //         autoClose: 2000
-        //     })
-        // });
+        axios.patch(`http://localhost:5000/api/orders/${orderId}/pay`, {
+            token,
+            totalPrice
+        })
+        .then((res)=> {
+            toast.success('Payment '+res.data.status +'!', {
+                position: toast.POSITION.BOTTOM_RIGHT,
+                autoClose: 2000
+            })
+            // this.props.history.push('/orders');
+            this.setState({
+                isPaid: !this.state.isPaid
+            })
+        })
+        .catch((err)=> {
+            toast.error(err.response.data.message, {
+                position: toast.POSITION.BOTTOM_RIGHT,
+                autoClose: 2000
+            })
+        });
      }
 
     render() {
