@@ -74,6 +74,9 @@ class OrderDetail extends Component {
     
         const {totalPrice} = this.state;
         const {orderId} = this.props.match.params;
+
+         
+
         // Axios.patch(`${config.get('backend_url_orders')}/${orderId}/pay`, {
         //     token,
         //     totalPrice
@@ -159,7 +162,7 @@ class OrderDetail extends Component {
                                     <h5 style={{color: "crimson"}} className="card-title">Total: {this.state.totalPrice}/- INR</h5>
                                 </div>
                                 {
-                                    !this.state.isPaid && < StripeCheckout className="w-50 payment-btn" stripeKey = "pk_test_OCOPweLlmHZpqnl1kjGF3SUt00JNA79g3l"
+                                    !this.state.isPaid && <StripeCheckout className="w-50 payment-btn" stripeKey = "pk_test_OCOPweLlmHZpqnl1kjGF3SUt00JNA79g3l"
                                     token={this.handleToken} currency="INR" amount={this.state.totalPrice * 100} />
                                 }
                             </div>

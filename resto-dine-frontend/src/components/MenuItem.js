@@ -6,7 +6,7 @@ export default function MenuItem(props) {
             <div className="menu_item">
                 <div className="row">
                     <div className="col-3">
-                        <img className="img-rounded rounded-circle ml-1" style={{"width": "5.5rem", "height": "5.5rem"}} src={props.photo} alt="Menu item"/>
+                        <img className="img-rounded rounded-circle ml-1" style={{"width": "5.5rem", "height": "5.5rem"}} src={`http://localhost:5000/${props.photo}`} alt="Menu item"/>
                     </div>
                     <div className="col-9">
                         <h4 className="font-weight-light mt-2">{props.name}</h4>
