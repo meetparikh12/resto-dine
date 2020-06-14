@@ -1,13 +1,33 @@
 import React from 'react' ;
 import { NavLink } from 'react-router-dom';
 import './NavLinks.css';
+import setJwtToken from '../../securityUtils/setJwtToken';
+import { setUserInfo } from '../../../actions/actions';
+import { connect } from 'react-redux';
+import { ADD_SHIPPING_DETAILS, ADD_PAYMENT_METHOD } from '../../../actions/actionTypes';
+import { store } from '../../../store/store';
 
-class NavLinks extends React.Component {
+function NavLinks(props) {
 
-    render(){
-        return (
+     const logoutUser = () => {
+        store.dispatch({
+            type: ADD_SHIPPING_DETAILS,
+            payload: {}
+        })
+        store.dispatch({
+            type: ADD_PAYMENT_METHOD,
+            payload: {}
+        })
+        // store.dispatch({
+        //     type: GET_ALL_PRODUCTS,
+        //     payload: []
+        // })
+        props.logoutUser();
+    }
+    const {loggedInUser} = props;
+    return (
         <ul className="nav-links">
-    
+
             <li>
                 <NavLink to="/" exact style={{textDecoration: "none"}}>HOME</NavLink>
             </li>
@@ -15,7 +35,7 @@ class NavLinks extends React.Component {
             <li>
                 <NavLink to="/food-products" style={{textDecoration: "none"}} exact>FOOD ITEMS</NavLink>
             </li>
-           
+            
             <li>
                 <NavLink to="/register" style={{textDecoration: "none"}}>MENU LIST</NavLink>
             </li>    
@@ -24,13 +44,33 @@ class NavLinks extends React.Component {
                 <NavLink to="/cart" style={{textDecoration: "none"}}>MY CART</NavLink>
             </li>     
 
-            <li>
+            { !loggedInUser.userId && <li>
                 <NavLink to="/login" style={{textDecoration: "none"}}>LOGIN</NavLink>
-            </li>                 
+            </li>}                
+
+                
+            { loggedInUser.userId && <li>
+                <NavLink to="/login" onClick={logoutUser} style={{textDecoration: "none"}}>LOGOUT</NavLink>
+            </li>}      
 
         </ul>
-        )
+    )
+}
+
+const mapStateToProps = state => {
+    return {
+        loggedInUser: state.user.userInfo
     }
 }
 
-export default NavLinks;
+const mapDispatchToProps = dispatchEvent => {
+    return {
+        logoutUser: () => {
+            localStorage.removeItem("jwt-token");
+            setJwtToken(false);
+            dispatchEvent(setUserInfo({}));
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavLinks);

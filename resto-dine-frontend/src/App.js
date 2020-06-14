@@ -12,6 +12,31 @@ import Shipping from './pages/Shipping';
 import Payment from './pages/Payment';
 import PlaceOrder from './pages/PlaceOrder';
 import OrderDetail from './pages/OrderDetail';
+import jwt_decode from 'jwt-decode';
+import setJwtToken from './shared/securityUtils/setJwtToken';
+import { store } from './store/store';
+import { SET_USER_INFO } from './actions/actionTypes';
+
+const token = localStorage.getItem("jwt-token");
+if (token) {
+  const deocded_token = jwt_decode(token);
+  setJwtToken(token);
+  store.dispatch({
+    type: SET_USER_INFO,
+    payload: deocded_token
+  })
+
+  if (deocded_token.exp < Date.now() / 1000) {
+    localStorage.removeItem("jwt-token");
+    setJwtToken(false);
+    store.dispatch({
+      type: SET_USER_INFO,
+      payload: {}
+    })
+    window.location.href = '/login';
+  }
+}
+
 function App() {
   return (
       <Router>        
