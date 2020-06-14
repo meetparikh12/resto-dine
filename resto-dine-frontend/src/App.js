@@ -16,6 +16,7 @@ import jwt_decode from 'jwt-decode';
 import setJwtToken from './shared/securityUtils/setJwtToken';
 import { store } from './store/store';
 import { SET_USER_INFO } from './actions/actionTypes';
+import FoodCategory from './pages/FoodCategory';
 
 const token = localStorage.getItem("jwt-token");
 if (token) {
@@ -50,6 +51,7 @@ function App() {
           <Route exact path="/payment" component={Payment}/>
           <Route exact path="/place-order" component={PlaceOrder}/>
           <Route exact path="/order/:orderId" component={OrderDetail}/>
+          <Route exact path="/foodCategory/:category" component={FoodCategory}/>
       </Router>
   );
 }

@@ -41,3 +41,10 @@ export const setUserInfo = (userInfo) => {
         payload: userInfo
     }
 }
+
+export const setFoodCategory = (foodCategory)=> {
+    return {
+        type: actionTypes.SET_FOOD_CATEGORY,
+        payload: foodCategory
+    }
+}
