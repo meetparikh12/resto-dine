@@ -51,6 +51,10 @@ function NavLinks(props) {
                 
             { loggedInUser.userId && <li>
                 <NavLink to="/login" onClick={logoutUser} style={{textDecoration: "none"}}>LOGOUT</NavLink>
+            </li>}
+
+            { loggedInUser.userId && <li>
+                <NavLink to="/orders" style={{textDecoration: "none"}}>MY ORDERS</NavLink>
             </li>}      
 
         </ul>
