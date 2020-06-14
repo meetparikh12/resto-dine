@@ -78,7 +78,7 @@ route.get('/:categoryIdentifier', async (req,res,next)=> {
     categoryIdentifier = categoryIdentifier.toUpperCase()
     let foodCategory;
     try {
-        foodCategory = await ProductCategory.find({categoryIdentifier}).populate('product')
+        foodCategory = await ProductCategory.findOne({categoryIdentifier}).populate('product')
     } catch(err){
         return next(new ErrorHandling('Food Category not fetched', 500))
     }

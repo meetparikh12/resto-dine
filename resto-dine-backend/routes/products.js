@@ -41,7 +41,7 @@ route.post('/:categoryIdentifier', auth, fileUpload.single('image') ,async (req,
     imageURL = imageURL.replace(/\\/g, "/")
 
     const product = new Product({
-        name, image: imageURL, price, quantityInStock, category: foodCategory._id, creator: req.user.userId
+        name, image: imageURL, price, isSpeciality, quantityInStock, category: foodCategory._id, creator: req.user.userId
     })
     try {
         const session = await mongoose.startSession()
@@ -86,6 +86,19 @@ route.get('/:productId', async (req,res,next)=> {
     res.status(200).json({foodProduct: product})
 })
 
+route.get('/speciality/food', async (req,res,next)=> {
+    let products;
+    try {
+        products = await Product.find({isSpeciality: true})
+    } catch(err) {
+        return next(new ErrorHandling('Food Products not fetched', 500))
+    }
+    if(!products || products.length === 0){
+        return next(new ErrorHandling('No Special Food Products found', 404))
+    }
+    res.status(200).json({products})
+})
+
 route.patch('/:productId', auth, async (req,res,next)=> {
     
     const {productId} = req.params;
@@ -101,10 +114,11 @@ route.patch('/:productId', auth, async (req,res,next)=> {
     if(!req.user.isAdmin || req.user.userId !== product.creator.toString()){
         return next(new ErrorHandling('Sorry, Not Authorized', 401))
     }
-    const {name, quantityInStock, price} = req.body;
+    const {name, quantityInStock, price, isSpeciality} = req.body;
     product.name = name;
     product.quantityInStock = quantityInStock;
     product.price = price;
+    product.isSpeciality = isSpeciality;
     try {
         await product.save();
     } catch(err) {
