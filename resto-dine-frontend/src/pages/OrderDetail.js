@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
-// import Axios from 'axios';
+import axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
 // import config from 'react-global-configuration';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import OrderItem from '../components/OrderItem';
-// toast.configure();  
-import './OrderDetail.css'
 import Footer from '../components/Footer';
+import './OrderDetail.css';
 class OrderDetail extends Component {
     constructor(props){
         super(props);
@@ -21,59 +20,41 @@ class OrderDetail extends Component {
             payment: {},
             isDelivered: false,
             isPaid: false,
-            // isLoaded: false
+            isLoaded: false
         }
         this.handleToken = this.handleToken.bind(this);
     }
 
     componentDidMount(){
-        // const {orderId} = this.props.match.params;
-        const {orderDetails} = this.props;
-        if(!orderDetails.shipping || !orderDetails.payment ) {
-            this.props.history.push('/shipping')
-        }
-        const {shipping, payment, orderItems, itemPrice, taxPrice, totalPrice, shippingPrice} = orderDetails;
-        this.setState({
-            shippingDetails: shipping, 
-            payment,
-            orderItems: orderItems,
-            subTotal: itemPrice,
-            taxPrice,
-            totalPrice,
-            shippingPrice
-            // isDelivered,
-            // isPaid
-            // isLoaded: true
+        const {orderId} = this.props.match.params;
+        axios.get('http://localhost:5000/api/orders/' +orderId)
+        .then((res)=> {
+            const {shipping, payment, orderItems, itemPrice, taxPrice, totalPrice, shippingPrice, isDelivered, isPaid} = res.data.order;
+            this.setState({
+                shippingDetails: shipping, 
+                payment,
+                orderItems: orderItems,
+                subTotal: itemPrice,
+                taxPrice,
+                totalPrice,
+                shippingPrice,
+                isDelivered,
+                isPaid,
+                isLoaded: true
+            })
         })
-
-        // Axios.get(`${config.get('backend_url_orders')}/` +orderId)
-        // .then((res)=> {
-        //     const {shipping, payment, orderItems, itemPrice, taxPrice, totalPrice, shippingPrice, isDelivered, isPaid} = res.data.order;
-        //     this.setState({
-        //         shippingDetails: shipping, 
-        //         payment,
-        //         orderItems: orderItems,
-        //         subTotal: itemPrice,
-        //         taxPrice,
-        //         totalPrice,
-        //         shippingPrice,
-        //         isDelivered,
-        //         isPaid,
-        //         isLoaded: true
-        //     })
-        // })
-        // .catch((err)=> {
-        //     toast.error(err.response.data.message, {
-        //         position: toast.POSITION.BOTTOM_RIGHT,
-        //         autoClose: 2000
-        //     })
-        // })
+        .catch((err)=> {
+            toast.error(err.response.data.message, {
+                position: toast.POSITION.BOTTOM_RIGHT,
+                autoClose: 2000
+            })
+        })
     }
 
     handleToken(token){
     
-        const {totalPrice} = this.state;
-        const {orderId} = this.props.match.params;
+        // const {totalPrice} = this.state;
+        // const {orderId} = this.props.match.params;
 
          
 
@@ -100,9 +81,11 @@ class OrderDetail extends Component {
      }
 
     render() {
-        // if(!this.state.isLoaded){
-        //     return <h4 className="text-center mt-5">Loading...</h4>
-        // }
+        if(!this.state.isLoaded){
+            return <div className="text-center mb-5" style={{margin: "20% auto"}}>
+                    <h1>Loading...</h1>
+                </div>
+        }
         return (
             <React.Fragment>
                 <div className="order_info mb-5">

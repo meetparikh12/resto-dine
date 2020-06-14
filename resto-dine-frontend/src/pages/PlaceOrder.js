@@ -2,8 +2,9 @@ import React, {useState, useEffect} from 'react'
 import { connect } from 'react-redux';
 import {store} from '../store/store';
 import Cookie from 'js-cookie';
-// import { CLEAR_CART } from '../actions/actionTypes';
-// import { toast } from 'react-toastify';
+import axios from 'axios';
+import { CLEAR_CART } from '../actions/actionTypes';
+import { toast } from 'react-toastify';
 // import config from 'react-global-configuration';
 import OrderItem from '../components/OrderItem';
 import './PlaceOrder.css';
@@ -60,24 +61,24 @@ function PlaceOrder(props){
             totalPrice,
             orderItems
         }
-        props.addOrderDetails(orderDetails, props.history);
-
-        // Axios.post(`${config.get('backend_url_orders')}`, orderDetails)
-        // .then((res)=> {
-        //     alert('Thank you for Shopping. Your Order ID is: ' +res.data.order._id);
-        //     Cookie.remove("cartItems");
-        //     store.dispatch({
-        //         type: CLEAR_CART,
-        //         payload: []
-        //     })
-        //     props.history.push(`/order/${res.data.order._id}`);
-        // })
-        // .catch((err)=> {
-        //     toast.error(err.response.data.message, {
-        //         position: toast.POSITION.BOTTOM_RIGHT,
-        //         autoClose: 2000
-        //     })
-        // });
+        
+        axios.post('http://localhost:5000/api/orders', orderDetails)
+        .then((res)=> {
+            alert('Thank you for Ordering. Your Order ID is: ' +res.data.order._id);
+            Cookie.remove("food-item");
+            store.dispatch({
+                type: CLEAR_CART,
+                payload: []
+            })
+            props.addOrderDetails(orderDetails);
+            props.history.push(`/order/${res.data.order._id}`);
+        })
+        .catch((err)=> {
+            toast.error(err.response.data.message, {
+                position: toast.POSITION.BOTTOM_RIGHT,
+                autoClose: 2000
+            })
+        });
     }
 
     if(!isLoaded){
@@ -163,9 +164,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatchEvent => {
     return {
-        addOrderDetails : (orderDetails, history) => {
+        addOrderDetails : (orderDetails) => {
             dispatchEvent(addOrderDetails(orderDetails))
-            history.push("/order")
         }
     }
 }

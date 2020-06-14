@@ -22,6 +22,10 @@ class NavLinks extends React.Component {
 
             <li>
                 <NavLink to="/cart" style={{textDecoration: "none"}}>MY CART</NavLink>
+            </li>     
+
+            <li>
+                <NavLink to="/login" style={{textDecoration: "none"}}>LOGIN</NavLink>
             </li>                 
 
         </ul>

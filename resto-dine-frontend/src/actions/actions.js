@@ -34,3 +34,10 @@ export const addOrderDetails = (orderDetails) => {
         payload: orderDetails
     }
 }
+
+export const setUserInfo = (userInfo) => {
+    return {
+        type: actionTypes.SET_USER_INFO,
+        payload: userInfo
+    }
+}

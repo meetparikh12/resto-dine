@@ -24,7 +24,7 @@ function App() {
           <Route exact path="/shipping" component={Shipping}/>
           <Route exact path="/payment" component={Payment}/>
           <Route exact path="/place-order" component={PlaceOrder}/>
-          <Route exact path="/order" component={OrderDetail}/>
+          <Route exact path="/order/:orderId" component={OrderDetail}/>
       </Router>
   );
 }

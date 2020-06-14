@@ -4,11 +4,22 @@ import Cookie from 'js-cookie'
 import './CartPage.css'
 import Footer from '../components/Footer';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
 function CartPage(props) {
     
     const [subTotal, setSubTotal] = useState(0);
+    const [cartRedirectPage, setCartRedirectPage] = useState("login");
     const food_item = Cookie.getJSON("food-item") || [];
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        if (props.loggedInUser.userId) {
+            setCartRedirectPage("shipping");
+        } else {
+            setCartRedirectPage("login");
+        }
+    }, [props.loggedInUser]);
 
     useEffect(() => {
         let product;
@@ -19,11 +30,17 @@ function CartPage(props) {
                 totalPrice += totalPrice = item.totalCost
             })
             setSubTotal(totalPrice);
+            setIsLoaded(true);
         } else {
             setSubTotal(0);
         }
     }, [props.cart])
     
+    if(!isLoaded){
+        return <div className="text-center mb-5" style={{margin: "20% auto"}}>
+                <h1>Loading...</h1>
+            </div>
+    }
     return (
         <React.Fragment>
             <div className="cart mb-5">
@@ -68,7 +85,7 @@ function CartPage(props) {
                             <div className="card checkout-box" style={{width: "18rem", margin: "2% auto"}}>
                                 <div className="card-body">
                                     <h5 className="card-title font-weight-light">Subtotal: {subTotal}/- INR</h5>
-                                    <Link to="/shipping" ><button type="button" className="btn mb-2 checkout-btn text-uppercase font-weight-light">Proceed To Checkout</button></Link>
+                                    <Link to={`/${cartRedirectPage}`}><button type="button" className="btn mb-2 checkout-btn text-uppercase font-weight-light">Proceed To Checkout</button></Link>
                                     <Link to="/food-products"><button type="button" className="btn shopping-btn text-uppercase font-weight-light">Continue Shopping</button></Link>
                                 </div>
                             </div>
@@ -82,11 +99,17 @@ function CartPage(props) {
 }
 
 CartPage.defaultProps = {
-    cart: []
+    cart: [],
+    loggedInUser: {}
+
 }
-const mapStateToprops = state => {
+CartPage.propTypes = {
+    cart: PropTypes.array.isRequired
+}
+const mapStateToProps = state => {
     return {
-        cart: state.cart.cartProduct
+        cart: state.cart.cartProduct,
+        loggedInUser: state.user.userInfo
     }
 }
-export default connect(mapStateToprops, null)(CartPage);
+export default connect(mapStateToProps, null)(CartPage);
