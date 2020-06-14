@@ -3,9 +3,9 @@ const Order = require('../models/Order');
 const ErrorHandling = require('../models/ErrorHandling');
 const Product = require('../models/Product');
 const User = require('../models/User');
-// const {secretKeyStripe} = require('../config/keys');
-// const stripe = require('stripe')(secretKeyStripe);
-// const {v4 : uuidv4 } = require('uuid');
+const {secretKeyStripe} = require('../config/key');
+const stripe = require('stripe')(secretKeyStripe);
+const {v4 : uuidv4 } = require('uuid');
 
 exports.CREATE_ORDER = async (req,res,next) => {
     const {shipping, payment, orderItems, itemPrice, shippingPrice, totalPrice, taxPrice} = req.body;
@@ -44,7 +44,6 @@ exports.CREATE_ORDER = async (req,res,next) => {
         await session.commitTransaction();
 
     } catch(err){
-        console.log(err);
         return next(new ErrorHandling('Order not created', 500))
     } 
     res.status(201).json({order});
@@ -61,7 +60,7 @@ exports.GET_ORDER = async (req,res,next)=> {
     if(!order){
         return next(new ErrorHandling('Order not found', 404))
     }
-    if(order.user.toString() !== req.user._id){
+    if(order.user.toString() !== req.user.userId){
         return next(new ErrorHandling('Not Authorized', 401))
     }
     res.status(200).json({order});
@@ -78,12 +77,12 @@ exports.GET_ALL_ORDERS = async (req,res,next)=> {
     if (!user) {
         return next(new ErrorHandling('User not found', 404))
     }
-    if(user._id.toString() !== req.user._id){  
+    if(user._id.toString() !== req.user.userId){  
         return next(new ErrorHandling('Not Authorized', 401));
     }
     let orders;
     try {
-        orders = await Order.find({user: req.user._id})
+        orders = await Order.find({user: req.user.userId})
     } catch(err){
         return next(new ErrorHandling('Orders not fetched', 500));
     } 
@@ -104,7 +103,7 @@ exports.MODIFY_ORDER = async (req,res,next)=> {
     if(!order){
         return next(new ErrorHandling('Order not found', 404));
     } 
-    if(order.user.toString() !== req.user._id){
+    if(order.user.toString() !== req.user.userId){
         return next(new ErrorHandling('Not Authorized', 401))
     }
     let status;
