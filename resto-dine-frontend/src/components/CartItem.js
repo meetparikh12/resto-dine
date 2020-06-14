@@ -12,7 +12,7 @@ function CartItem(props) {
     }
     return (
         <tr>
-            <td><img src={props.image} className="cart-img-style" alt="Item img"></img></td>
+            <td><img src={`http://localhost:5000/${props.image}`} className="cart-img-style" alt="Item img"></img></td>
             <td>{props.name}</td>
             <td className="text-center">{props.quantity}</td>
             <td className="text-center">{props.price}/-</td>

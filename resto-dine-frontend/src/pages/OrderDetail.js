@@ -122,7 +122,7 @@ class OrderDetail extends Component {
                             <div className="row">
                                 <div className="card bg-light text-dark" style={{width: "90%", margin: "auto"}}>
                                     <div className="card-body">
-                                        <h5 className="card-title"><b>Shipping Address</b></h5>
+                                        <h5 className="card-title"><b>Delivery Address</b></h5>
                                         <p className="card-text">{this.state.shippingDetails.address}, {this.state.shippingDetails.city}, {this.state.shippingDetails.country}, {this.state.shippingDetails.postalCode}</p>
                                         {this.state.isDelivered === true ? <h6><b>Delivered</b></h6> : <h6><b>Not Delivered</b></h6>}
                                     </div>

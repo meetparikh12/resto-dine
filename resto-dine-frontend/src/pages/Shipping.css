@@ -59,53 +59,35 @@
     line-height: 40px;
 }
 
-@media screen and (max-width: 552px) {
+@media screen and (max-width: 631px) {
+    .shipping_page .overlay-content {
+        top: 50%;
+    }
     .shipping_page .overlay-content .primary_heading{
-        font-size: 80px;
+        font-size: 70px;
     }
     .shipping_page .overlay-content .secondary_heading {
         font-size: 50px;
+        top: -35px;
     }
 }
-@media screen and (max-width: 499px) {
-    .shipping_page .overlay-content .primary_heading {
-        font-size: 70px;
-    }
-
-    .shipping_page .overlay-content .secondary_heading {
-        font-size: 40px;
-    }
-}
-@media screen and (max-width: 445px) {
-    .shipping_page .overlay-content .primary_heading {
-        font-size: 65px;
-    }
-
-    .shipping_page .overlay-content .secondary_heading {
-        font-size: 35px;
-    }
-}
-
-@media screen and (max-width: 403px) {
-    .shipping_page {
-        height: 30rem !important;
-    }
-
+@media screen and (max-width: 505px) {
     .shipping_page .overlay-content {
         top: 52%;
     }
     .shipping_page .overlay-content .primary_heading {
-        font-size: 60px;
+        font-size: 55px;
     }
+
     .shipping_page .overlay-content .secondary_heading {
-        font-size: 30px;
-        top: -39px;
+        font-size: 35px;
+        top: -32px;
     }
 }
 
 @media screen and (max-width: 418px) {
     .shipping_page .overlay-content {
-        top: 50%;
+        top: 55%;
     }
 
     .shipping_page .overlay-content .primary_heading {
@@ -118,32 +100,17 @@
     }
 }
 
-@media screen and (max-width: 403px) {
+@media screen and (max-width: 409px) {
     .shipping_page {
         height: 30rem !important;
     }
 
     .shipping_page .overlay-content {
-        top: 52%;
+        top: 55%;
     }
 
     .shipping_page .overlay-content .primary_heading {
-        font-size: 60px;
-    }
-
-    .shipping_page .overlay-content .secondary_heading {
-        font-size: 30px;
-        top: -39px;
-    }
-}
-
-@media screen and (max-width: 389px) {
-    .shipping_page .overlay-content {
-        top: 50%;
-    }
-
-    .shipping_page .overlay-content .primary_heading {
-        font-size: 55px;
+        font-size: 52px;
     }
 
     .shipping_page .overlay-content .secondary_heading {
@@ -151,9 +118,10 @@
         top: -35px;
     }
 }
-@media screen and (max-width: 362px) {
+
+@media screen and (max-width: 392px) {
     .shipping_page .overlay-content {
-        top: 50%;
+        top: 55%;
     }
 
     .shipping_page .overlay-content .primary_heading {
@@ -161,7 +129,21 @@
     }
 
     .shipping_page .overlay-content .secondary_heading {
-        font-size: 25px;
-        top: -35px;
+        font-size: 30px;
+        top: -32px;
+    }
+}
+@media screen and (max-width: 379px) {
+    .shipping_page .overlay-content {
+        top: 55%;
+    }
+
+    .shipping_page .overlay-content .primary_heading {
+        font-size: 47px;
+    }
+
+    .shipping_page .overlay-content .secondary_heading {
+        font-size: 35px;
+        top: -32px;
     }
 }

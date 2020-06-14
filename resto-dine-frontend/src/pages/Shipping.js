@@ -45,7 +45,7 @@ class Shipping extends Component {
                         <div className="bg-img">
                             <div className="overlay-bg"></div>
                             <div className="overlay-content">
-                                <h2 className="primary_heading">Shipping Page</h2>
+                                <h2 className="primary_heading">Delivery Address</h2>
                                 <h3 className="secondary_heading">Your Details</h3>
                             </div>
                         </div>

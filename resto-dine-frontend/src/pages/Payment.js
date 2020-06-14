@@ -41,8 +41,8 @@ class Payment extends Component {
                         <div className="bg-img">
                             <div className="overlay-bg"></div>
                             <div className="overlay-content">
-                                <h2 className="primary_heading">Method</h2>
-                                <h3 className="secondary_heading">Payment</h3>
+                                <h2 className="primary_heading">Payment Info</h2>
+                                <h3 className="secondary_heading">Method</h3>
                             </div>
                         </div>
                     </div>

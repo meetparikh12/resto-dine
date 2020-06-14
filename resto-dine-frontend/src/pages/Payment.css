@@ -58,110 +58,96 @@
     font-weight: 700;
     line-height: 40px;
 }
+@media screen and (max-width: 631px) {
+    .payment_page .overlay-content {
+        top: 50%;
+    }
 
-@media screen and (max-width: 552px) {
-    .payment_page .overlay-content .primary_heading{
-        font-size: 80px;
-    }
-    .payment_page .overlay-content .secondary_heading {
-        font-size: 50px;
-    }
-}
-@media screen and (max-width: 499px) {
     .payment_page .overlay-content .primary_heading {
         font-size: 70px;
     }
 
     .payment_page .overlay-content .secondary_heading {
-        font-size: 40px;
+        font-size: 50px;
+        top: -35px;
     }
 }
-@media screen and (max-width: 445px) {
+
+@media screen and (max-width: 505px) {
+    .payment_page .overlay-content {
+        top: 52%;
+    }
+
     .payment_page .overlay-content .primary_heading {
-        font-size: 65px;
+        font-size: 55px;
     }
 
     .payment_page .overlay-content .secondary_heading {
         font-size: 35px;
-    }
-}
-
-@media screen and (max-width: 403px) {
-    .payment_page {
-        height: 30rem !important;
-    }
-
-    .payment_page .overlay-content {
-        top: 52%;
-    }
-    .payment_page .overlay-content .primary_heading {
-        font-size: 60px;
-    }
-    .payment_page .overlay-content .secondary_heading {
-        font-size: 30px;
-        top: -39px;
+        top: -32px;
     }
 }
 
 @media screen and (max-width: 418px) {
     .payment_page .overlay-content {
-        top: 50%;
+        top: 55%;
     }
 
     .payment_page .overlay-content .primary_heading {
-        font-size: 70px;
+        font-size: 55px;
     }
 
     .payment_page .overlay-content .secondary_heading {
-        font-size: 60px;
+        font-size: 30px;
         top: -35px;
     }
 }
 
-@media screen and (max-width: 403px) {
+@media screen and (max-width: 409px) {
     .payment_page {
         height: 30rem !important;
     }
 
     .payment_page .overlay-content {
-        top: 52%;
+        top: 55%;
     }
 
     .payment_page .overlay-content .primary_heading {
-        font-size: 60px;
+        font-size: 52px;
     }
 
     .payment_page .overlay-content .secondary_heading {
         font-size: 30px;
-        top: -39px;
-    }
-}
-
-@media screen and (max-width: 389px) {
-    .payment_page .overlay-content {
-        top: 50%;
-    }
-
-    .payment_page .overlay-content .primary_heading {
-        font-size: 70px;
-    }
-
-    .payment_page .overlay-content .secondary_heading {
-        font-size: 60px;
         top: -35px;
     }
 }
-@media screen and (max-width: 362px) {
+
+@media screen and (max-width: 392px) {
     .payment_page .overlay-content {
-        top: 50%;
+        top: 55%;
     }
 
     .payment_page .overlay-content .primary_heading {
-        font-size: 70px;
+        font-size: 50px;
     }
 
     .payment_page .overlay-content .secondary_heading {
-        font-size: 60px;
-        top: -35px;
+        font-size: 30px;
+        top: -32px;
+    }
+}
+
+@media screen and (max-width: 379px) {
+    .payment_page .overlay-content {
+        top: 55%;
+    }
+
+    .payment_page .overlay-content .primary_heading {
+        font-size: 47px;
+    }
+
+    .payment_page .overlay-content .secondary_heading {
+        font-size: 35px;
+        top: -32px;
     }
 }

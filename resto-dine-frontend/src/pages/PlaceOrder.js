@@ -14,7 +14,7 @@ function PlaceOrder(props){
     
     const [subTotal, setSubTotal] = useState(0);
     const {shippingDetails, paymentMethod, cart} = props;
-    // const [isLoaded, setIsLoaded] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
     const shippingPrice = subTotal > 1000 ? 0 : 100;
     const taxPrice = parseFloat((0.15 * subTotal).toFixed(2));
     const totalPrice = subTotal + shippingPrice + taxPrice;
@@ -22,10 +22,8 @@ function PlaceOrder(props){
     useEffect(()=> {
         
         if(!props.shippingDetails.address){
-            // setIsLoaded(true);
             props.history.push('/shipping')
         } else if(!props.paymentMethod.method){
-            // setIsLoaded(true);
             props.history.push('/payment')
         }
 
@@ -40,6 +38,7 @@ function PlaceOrder(props){
                 totalPrice += totalPrice = item.totalCost
             })
             setSubTotal(totalPrice);
+            setIsLoaded(true);
         } else {
             setSubTotal(0);
         }
@@ -81,9 +80,11 @@ function PlaceOrder(props){
         // });
     }
 
-    // if(!isLoaded){
-    //     return <h4 className="text-center mt-5">Loading...</h4>
-    // }
+    if(!isLoaded){
+        return <div className="text-center mb-5" style={{margin: "20% auto"}}>
+                <h1>Loading...</h1>
+            </div>
+    }
     return (
         <React.Fragment>
             <div className="order mb-5">
@@ -103,7 +104,7 @@ function PlaceOrder(props){
                         <div className="row">
                             <div className="card bg-light text-dark" style={{width: "90%", margin: "auto"}}>
                                 <div className="card-body">
-                                    <h5 className="card-title"><b>Shipping Address</b></h5>
+                                    <h5 className="card-title"><b>Delivery Address</b></h5>
                                     <p className="card-text">{shippingDetails.address}, {shippingDetails.city}, {shippingDetails.country}, {shippingDetails.postalCode}</p>
                                 </div>
                             </div>

@@ -71,10 +71,13 @@ import { toast } from 'react-toastify'
 export default function FoodProduct() {
 
     const [food_item, setFoodItem] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
+
     useEffect(()=> {
         axios.get('http://localhost:5000/api/product')
         .then((res)=> {
             setFoodItem(res.data.products);
+            setIsLoaded(true);
         })
         .catch((err)=> {
             toast.error(err.response.data.message, {
@@ -83,6 +86,14 @@ export default function FoodProduct() {
             })
         })
     }, [])
+
+    if(!isLoaded){
+        return (
+            <div className="text-center mb-5" style={{margin: "20% auto"}}>
+                <h1>Loading...</h1>
+            </div>
+        )
+    }
     return (
         <React.Fragment>
             <div className="food_product mb-5">
