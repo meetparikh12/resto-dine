@@ -77,16 +77,22 @@ function SingleProduct(props) {
                         <h3 className="title font-weight-bold">{foodProduct.name}</h3>
                         <h4 className="text-danger font-weight-bold">{foodProduct.price}/- INR</h4>
                         <div className="wrapper">
-                                <div className="form-group">
-                                    <label className="font-weight-bold">Quantity:</label>
-                                        {foodProduct.quantityInStock > 0 ? <select className="form-control quantity-selector" onChange={quantityHandler}>
-                                            {[...Array(foodProduct.quantityInStock).keys()].map((quantity)=> 
-                                                <option key={quantity+1} value={quantity+1}>{quantity+1}</option>
-                                            )}
-                                        </select>: <span> 0</span>}
-                                </div> 
-                                <button className="btn btn-cart mb-3 text-uppercase font-weight-lighter" onClick={addToCartHandler} style={{color: "white"}}>Add To Cart</button>
-                                <div className="font-weight-bold mb-4">Available</div>
+                                { foodProduct.quantityInStock > 0 ? 
+                                    <div className="showForm">
+                                        <div className="form-group">
+                                            <label className="font-weight-bold">Quantity:</label>
+                                                {foodProduct.quantityInStock > 0 ? <select className="form-control quantity-selector" onChange={quantityHandler}>
+                                                    {[...Array(foodProduct.quantityInStock).keys()].map((quantity)=> 
+                                                        <option key={quantity+1} value={quantity+1}>{quantity+1}</option>
+                                                    )}
+                                                </select>: <span> 0</span>}
+                                        </div> 
+                                        <button className="btn btn-cart mb-3 text-uppercase font-weight-lighter" onClick={addToCartHandler} style={{color: "white"}}>Add To Cart</button>
+                                            <div className="font-weight-bold mb-4">Available</div>
+                                    </div>
+                                : 
+                                    <div className="font-weight-light mb-3">Sorry, The item is currently out of stock.</div>
+                                }
                         </div>
                     </div>
                 </div>
