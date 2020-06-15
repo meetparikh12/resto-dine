@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const {secretKey} = require('../config/key')
 const {body, validationResult} = require('express-validator');
+const auth = require('../middleware/auth')
 
 const route = express.Router()
 
@@ -94,5 +95,50 @@ route.post('/login', async (req,res,next)=> {
         return next(new ErrorHandling('Not Authorized', 401))
     }
     res.status(200).json({token});
+})
+
+route.patch('/reservation', auth, async (req,res,next)=> {
+    const {people, date, time, name, email, phone} = req.body;
+    let user;
+    try {
+        user = await User.findOne({email: req.user.email}).select('reservation')
+    } catch(err){
+        return next(new ErrorHandling('User not fetched', 500))
+    }
+    if(!user){
+        return next(new ErrorHandling('User not found', 404))
+    }
+    if(user.reservation){
+        return next(new ErrorHandling('You have already booked your table!', 403))
+    }
+    user.reservation = {
+        people, date, time, name, email, phone
+    }
+    try {
+        await user.save();
+    } catch(err){
+        return next(new ErrorHandling('Reservation not done.', 500))
+    }
+    res.status(200).json({message: 'Reservation Confirmed.'})
+})
+
+route.get('/reservation/:userId', auth, async (req,res,next)=> {
+    let user;
+    try {
+        user = await User.findOne({email: req.user.email}).select('reservation')
+    } catch(err){
+        return next(new ErrorHandling('User not fetched', 500))
+    }
+    if(!user){
+        return next(new ErrorHandling('User not found', 404))
+    }
+    if(user._id.toString() !== req.user.userId){
+        return next(new ErrorHandling('Sorry, Not Authorized', 401))
+    }
+    if(!user.reservation){
+        return next(new ErrorHandling('You have not done any booking yet.', 422))
+    }
+
+    res.status(200).json({user});
 })
 module.exports = route;

@@ -1,4 +1,36 @@
 const mongoose = require('mongoose')
+
+const bookTableSchema = new mongoose.Schema({
+    name: {
+        type: String, 
+        required: true
+    }, 
+    email: {
+        type: String,
+        required: true
+    }, 
+    phone: {
+        type: Number, 
+        required: true
+    }, 
+    people: {
+        type: Number, 
+        required: true
+    }, 
+    date: {
+        type: String, 
+        required: true
+    }, 
+    time: {
+        type: String,
+        required: true
+    }, 
+    status: {
+        type: String,
+        default: 'Not Accepted'
+    }
+})
+
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -31,7 +63,8 @@ const userSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Order',
         required: true
-    }]
+    }],
+    reservation: bookTableSchema
     
 }, {timestamps: true})
 
