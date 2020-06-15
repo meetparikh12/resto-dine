@@ -22,9 +22,6 @@
     font-family: "Roboto Cn", sans-serif;
     font-weight: 300;
     height: 1.8rem;
-    /* padding: 0.4rem; */
-    /* border-radius: 0.4rem; */
-    /* border: 2px solid rgb(176, 176, 182); */
 }
 
 .main-navigation__title span {
@@ -44,7 +41,7 @@
     height: 100%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1037px) {
     .main-navigation__menu-btn {
         display: none;
     }

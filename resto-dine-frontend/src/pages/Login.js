@@ -66,7 +66,7 @@ class Login extends Component{
             <React.Fragment>
                 <div className="login">
                     <div className="form-wrapper">
-                        <img className="bg-img" src="img/login/login.png" alt="login-img"></img>
+                        <img className="bg-img" src="img/banner/banner-image.jpg" alt="login-img"></img>
                         <div className="bg-overlay"></div>
                         <form onSubmit={this.formSubmitHandler}>
                             <div className="form-content">
