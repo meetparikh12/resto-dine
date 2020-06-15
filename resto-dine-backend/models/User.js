@@ -28,6 +28,11 @@ const bookTableSchema = new mongoose.Schema({
     status: {
         type: String,
         default: 'Not Accepted'
+    },
+    bookingUser: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     }
 })
 

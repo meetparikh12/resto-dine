@@ -112,7 +112,7 @@ route.patch('/reservation', auth, async (req,res,next)=> {
         return next(new ErrorHandling('You have already booked your table!', 403))
     }
     user.reservation = {
-        people, date, time, name, email, phone
+        people, date, time, name, email, phone, bookingUser: req.user.userId
     }
     try {
         await user.save();
@@ -123,6 +123,7 @@ route.patch('/reservation', auth, async (req,res,next)=> {
 })
 
 route.get('/reservation/:userId', auth, async (req,res,next)=> {
+    const {userId} = req.params;
     let user;
     try {
         user = await User.findOne({email: req.user.email}).select('reservation')
@@ -132,13 +133,15 @@ route.get('/reservation/:userId', auth, async (req,res,next)=> {
     if(!user){
         return next(new ErrorHandling('User not found', 404))
     }
-    if(user._id.toString() !== req.user.userId){
+    if(userId !== req.user.userId){
         return next(new ErrorHandling('Sorry, Not Authorized', 401))
     }
     if(!user.reservation){
         return next(new ErrorHandling('You have not done any booking yet.', 422))
     }
-
+    // if(user.reservation.bookingUser.toString() !== req.user.userId){
+    //     return next(new ErrorHandling('No bookings found.', 404))
+    // }
     res.status(200).json({user});
 })
 module.exports = route;
