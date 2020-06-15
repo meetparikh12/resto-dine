@@ -5,12 +5,13 @@ import MenuItem from '../components/MenuItem'
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import Footer from '../components/Footer';
+import config from 'react-global-configuration'
 
 export default function MenuPage() {
     const [menuItem, setMenuItem] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(()=> {
-        axios.get("http://localhost:5000/api/category")
+        axios.get(`${config.get('backend_url_category')}`)
         .then((res)=> {
             setMenuItem(res.data.categories);
             setIsLoaded(true);

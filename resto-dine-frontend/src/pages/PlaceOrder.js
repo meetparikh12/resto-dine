@@ -5,7 +5,7 @@ import Cookie from 'js-cookie';
 import axios from 'axios';
 import { CLEAR_CART } from '../actions/actionTypes';
 import { toast } from 'react-toastify';
-// import config from 'react-global-configuration';
+import config from 'react-global-configuration';
 import OrderItem from '../components/OrderItem';
 import './PlaceOrder.css';
 import { addOrderDetails } from '../actions/actions';
@@ -63,7 +63,7 @@ function PlaceOrder(props){
             orderItems
         }
         
-        axios.post('http://localhost:5000/api/orders', orderDetails)
+        axios.post(`${config.get('backend_url_orders')}`, orderDetails)
         .then((res)=> {
             alert('Thank you for Ordering. Your Order ID is: ' +res.data.order._id);
             Cookie.remove("food-item");
@@ -126,7 +126,7 @@ function PlaceOrder(props){
                                 <h5 className="card-title"><b>Order Items</b></h5>
                                 {cart.map((item)=> {
                                     return (
-                                        <OrderItem key={item._id} item={item}/>
+                                        <OrderItem key={item.foodId} item={item}/>
                                     )
                                 })}
                             </div>      

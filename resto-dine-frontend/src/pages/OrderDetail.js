@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
-// import config from 'react-global-configuration';
+import config from 'react-global-configuration';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import OrderItem from '../components/OrderItem';
 import Footer from '../components/Footer';
 import './OrderDetail.css';
+import { store } from '../store/store';
+import { ORDER_DETAILS, ADD_PAYMENT_METHOD, ADD_SHIPPING_DETAILS } from '../actions/actionTypes';
 class OrderDetail extends Component {
     constructor(props){
         super(props);
@@ -27,7 +29,7 @@ class OrderDetail extends Component {
 
     componentDidMount(){
         const {orderId} = this.props.match.params;
-        axios.get('http://localhost:5000/api/orders/' +orderId)
+        axios.get(`${config.get('backend_url_orders')}/` + orderId)
         .then((res)=> {
             const {shipping, payment, orderItems, itemPrice, taxPrice, totalPrice, shippingPrice, isDelivered, isPaid} = res.data.order;
             this.setState({
@@ -41,6 +43,18 @@ class OrderDetail extends Component {
                 isDelivered,
                 isPaid,
                 isLoaded: true
+            })
+            store.dispatch({
+                type: ORDER_DETAILS,
+                payload: {}
+            })
+            store.dispatch({
+                type: ADD_PAYMENT_METHOD,
+                payload: {}
+            })
+            store.dispatch({
+                type: ADD_SHIPPING_DETAILS,
+                payload: {}
             })
         })
         .catch((err)=> {
@@ -58,7 +72,7 @@ class OrderDetail extends Component {
         const {totalPrice} = this.state;
         const {orderId} = this.props.match.params;
 
-        axios.patch(`http://localhost:5000/api/orders/${orderId}/pay`, {
+        axios.patch(`${config.get('backend_url_orders')}/${orderId}/pay`, {
             token,
             totalPrice
         })

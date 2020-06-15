@@ -1,6 +1,8 @@
 import React from 'react'
 import './MenuItem.css'
 import { Link } from 'react-router-dom'
+import config from 'react-global-configuration'
+
 export default function MenuItem(props) {
     
     return (
@@ -8,7 +10,7 @@ export default function MenuItem(props) {
             <Link to={`/foodCategory/${props.name}`} style={{textDecoration: "none"}}><div className="menu_item">
                 <div className="row">
                     <div className="col-3">
-                        <img className="img-rounded rounded-circle ml-1" style={{"width": "5.5rem", "height": "5.5rem"}} src={`http://localhost:5000/${props.photo}`} alt="Menu item"/>
+                        <img className="img-rounded rounded-circle ml-1" style={{"width": "5.5rem", "height": "5.5rem"}} src={`${config.get('backend_asset_url')}/${props.photo}`} alt="Menu item"/>
                     </div>
                     <div className="col-9">
                         <h4 className="font-weight-light mt-2" style={{color: "#212529"}}>{props.name}</h4>

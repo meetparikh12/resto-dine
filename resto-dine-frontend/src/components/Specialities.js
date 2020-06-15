@@ -3,13 +3,14 @@ import './Specialities.css'
 import FoodItem from './FoodItem'
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import config from 'react-global-configuration'
 
 export default function Specialities() {
 
     const [specialFoodItems, setSpecialFoodItems] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(()=> {
-        axios.get("http://localhost:5000/api/product/speciality/food")
+        axios.get(`${config.get('backend_url_products')}/speciality/food`)
         .then((res)=> {
             setSpecialFoodItems(res.data.products);
             setIsLoaded(true);

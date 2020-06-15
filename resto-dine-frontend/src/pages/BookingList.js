@@ -3,7 +3,7 @@ import axios from 'axios'
 import { connect } from 'react-redux';
 import Card from '../shared/components/UIElements/Card';
 import { toast } from 'react-toastify';
-// import config from 'react-global-configuration';
+import config from 'react-global-configuration';
 import './BookingList.css';
 import Footer from '../components/Footer';
 
@@ -21,7 +21,7 @@ class BookingList extends Component {
     }
     componentDidMount(){
         const {userId} = this.props.loggedInUser;
-        axios.get('http://localhost:5000/api/users/reservation/' + userId)
+        axios.get(`${config.get('backend_url_users')}/reservation/` + userId)
         .then((res)=> {
             this.setState({
                 date: res.data.user.reservation.date,

@@ -1,13 +1,15 @@
 import React from 'react'
 import './FoodItem.css'
 import { Link } from 'react-router-dom'
+import config from 'react-global-configuration'
+
 export default function FoodItem(props) {
     return (
         <div className="col-md-6 col-lg-4 product_item">
             <div className="card mb-4" style={{"width": "100%"}}>
                 <div className="view overlay hm-black-light">
                     <Link to={`/food-item/${props.id}`}>
-                        <img className="card-img-top food-img-hover" src={`http://localhost:5000/${props.image}`} style={{height: "14.5rem", borderBottom: "1px solid rgba(0,0,0,.1)"}} alt="Food-Post"/>
+                        <img className="card-img-top food-img-hover" src={`${config.get('backend_asset_url')}/${props.image}`} style={{height: "14.5rem", borderBottom: "1px solid rgba(0,0,0,.1)"}} alt="Food-Post"/>
                         <div className="mask"></div>
                         <button className="btn">View</button>
                     </Link>

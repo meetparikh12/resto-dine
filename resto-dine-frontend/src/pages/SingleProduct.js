@@ -7,6 +7,7 @@ import { addToCart } from '../actions/actions';
 import { store } from '../store/store';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import config from 'react-global-configuration'
 
 function SingleProduct(props) {
 
@@ -16,7 +17,7 @@ function SingleProduct(props) {
 
     useEffect(()=> {
         const foodId = props.match.params.foodId;
-        axios.get('http://localhost:5000/api/product/' +foodId)
+        axios.get(`${config.get('backend_url_products')}/` + foodId)
         .then((res)=> {
             setFoodProduct(res.data.foodProduct)
             setIsLoaded(true);
@@ -71,7 +72,11 @@ function SingleProduct(props) {
             <div className="container mb-5">
                 <div className="row">
                     <div className="col-md-6">
-                        <img className="img-fluid img-style" src={`http://localhost:5000/${foodProduct.image}`} alt="Food post"/>
+                        < img className = "img-fluid img-style"
+                        src = {
+                            `${config.get('backend_asset_url')}/${foodProduct.image}`
+                        }
+                        alt = "Food post" / >
                     </div>
                     <div className="col-md-6">
                         <h3 className="title font-weight-bold">{foodProduct.name}</h3>

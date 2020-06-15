@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { removeFromCart } from '../actions/actions'
 import { store } from '../store/store'
 import Cookie from 'js-cookie'
+import config from 'react-global-configuration'
 
 function CartItem(props) {
 
@@ -12,7 +13,7 @@ function CartItem(props) {
     }
     return (
         <tr>
-            <td><img src={`http://localhost:5000/${props.image}`} className="cart-img-style" alt="Item img"></img></td>
+            <td><img src={`${config.get('backend_asset_url')}/${props.image}`} className="cart-img-style" alt="Item img"></img></td>
             <td>{props.name}</td>
             <td className="text-center">{props.quantity}</td>
             <td className="text-center">{props.price}/-</td>

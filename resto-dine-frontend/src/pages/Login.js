@@ -9,7 +9,7 @@ import { setUserInfo } from '../actions/actions';
 import jwt_decode from 'jwt-decode';
 import { toast } from 'react-toastify';
 import setJwtToken from '../shared/securityUtils/setJwtToken';
-// import config from 'react-global-configuration';
+import config from 'react-global-configuration';
 
 class Login extends Component{
     constructor(props){
@@ -44,7 +44,7 @@ class Login extends Component{
             password: this.state.password
         }
       
-        axios.post('http://localhost:5000/api/users/login', loginUser)
+        axios.post(`${config.get('backend_url_users')}/login`, loginUser)
         .then((res)=> {
             const {token} = res.data;
             localStorage.setItem("jwt-token", token);
@@ -76,7 +76,7 @@ class Login extends Component{
                                     <input className="form-control" required formcontrolname="email" onChange={this.formChangeHandler} id="email" name="email" type="email" value={this.state.email}/>
                                 </div>
                                 <div className="form-group">
-                                    <label fhtmlForor="password">Password</label>
+                                    <label htmlFor="password">Password</label>
                                     <input className="form-control" required formcontrolname="password" onChange={this.formChangeHandler} id="password" name="password" type="password" value={this.state.password}/>
                                 </div>
                                 <div className="form-group">

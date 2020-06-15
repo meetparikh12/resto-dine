@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import './Reservation.css'
 import { toast } from 'react-toastify'
 import { connect } from 'react-redux'
+import config from 'react-global-configuration'
+
 class Reservation extends Component {
 
     constructor(props){
@@ -43,19 +45,11 @@ class Reservation extends Component {
                 "time": this.state.time,
                 "people": this.state.people
             }
-            axios.patch('http://localhost:5000/api/users/reservation', reservation)
+            axios.patch(`${config.get('backend_url_users')}/reservation`, reservation)
             .then((res)=> {
                 toast.success(res.data.message, {
                     position: toast.POSITION.BOTTOM_RIGHT,
                     autoClose: 2000
-                })
-                this.setState({
-                    name: "",
-                    phone: "",
-                    email: "",
-                    date: "",
-                    time: "",
-                    people: "1"
                 })
             })
             .catch((err)=> {
@@ -64,6 +58,7 @@ class Reservation extends Component {
                     autoClose: 2000
                 })
             })
+            
         }
     }
 
