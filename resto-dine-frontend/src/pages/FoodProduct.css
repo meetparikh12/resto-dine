@@ -33,7 +33,7 @@
     position: absolute;
     text-align: center;
     width: 100%;
-    top: 48%;
+    top: 42%;
     color: #FFFFFF;
     padding: 0 2rem;
 }
@@ -59,11 +59,96 @@
      line-height: 40px;
  }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 631px) {
+    .food_product .overlay-content {
+        top: 42%;
+    }
+
+    .food_product .overlay-content .primary_heading {
+        font-size: 90px;
+    }
+
+    .food_product .overlay-content .secondary_heading {
+        font-size: 55px;
+        top: -42px;
+    }
+}
+
+@media screen and (max-width: 505px) {
+    .food_product .overlay-content {
+        top: 42%;
+    }
+
+    .food_product .overlay-content .primary_heading {
+        font-size: 90px;
+    }
+
+    .food_product .overlay-content .secondary_heading {
+        font-size: 50px;
+        top: -42px;
+    }
+}
+
+@media screen and (max-width: 437px) {
+    .food_product .overlay-content {
+        top: 42%;
+    }
+
+    .food_product .overlay-content .primary_heading {
+        font-size: 90px;
+    }
+
+    .food_product .overlay-content .secondary_heading {
+        font-size: 50px;
+        top: -42px;
+    }
+}
+
+@media screen and (max-width: 409px) {
     .food_product {
         height: 30rem !important;
     }
+
     .food_product .overlay-content {
-        top: 44%;
+        top: 42%;
+    }
+
+    .food_product .overlay-content .primary_heading {
+        font-size: 90px;
+    }
+
+    .food_product .overlay-content .secondary_heading {
+        font-size: 50px;
+        top: -42px;
+    }
+}
+
+@media screen and (max-width: 392px) {
+    .food_product .overlay-content {
+        top: 42%;
+    }
+
+    .food_product .overlay-content .primary_heading {
+        font-size: 90px;
+    }
+
+    .food_product .overlay-content .secondary_heading {
+        font-size: 50px;
+        top: -42px;
+    }
+}
+
+@media screen and (max-width: 379px) {
+    .food_product .overlay-content {
+        top: 42%;
+    }
+
+    .food_product .overlay-content .primary_heading {
+        font-size: 90px;
+    }
+
+    .food_product .overlay-content .secondary_heading {
+        font-size: 50px;
+        top: -42px;
     }
 }

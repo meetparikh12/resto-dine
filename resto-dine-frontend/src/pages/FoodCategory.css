@@ -33,7 +33,7 @@
     position: absolute;
     text-align: center;
     width: 100%;
-    top: 48%;
+    top: 42%;
     color: #FFFFFF;
     padding: 0 2rem;
 }
@@ -61,7 +61,7 @@
 
 @media screen and (max-width: 631px) {
     .food_category_banner .overlay-content {
-        top: 50%;
+        top: 45%;
     }
 
     .food_category_banner .overlay-content .primary_heading {
@@ -76,7 +76,7 @@
 
 @media screen and (max-width: 505px) {
     .food_category_banner .overlay-content {
-        top: 51%;
+        top: 45%;
     }
 
     .food_category_banner .overlay-content .primary_heading {
@@ -89,9 +89,9 @@
     }
 }
 
-@media screen and (max-width: 418px) {
+@media screen and (max-width: 437px) {
     .food_category_banner .overlay-content {
-        top: 52%;
+        top: 45%;
     }
 
     .food_category_banner .overlay-content .primary_heading {
@@ -110,7 +110,7 @@
     }
 
     .food_category_banner .overlay-content {
-        top: 53%;
+        top: 45%;
     }
 
     .food_category_banner .overlay-content .primary_heading {
@@ -125,7 +125,7 @@
 
 @media screen and (max-width: 392px) {
     .food_category_banner .overlay-content {
-        top: 53%;
+        top: 45%;
     }
 
     .food_category_banner .overlay-content .primary_heading {
@@ -140,7 +140,7 @@
 
 @media screen and (max-width: 379px) {
     .food_category_banner .overlay-content {
-        top: 53%;
+        top: 45%;
     }
 
     .food_category_banner .overlay-content .primary_heading {

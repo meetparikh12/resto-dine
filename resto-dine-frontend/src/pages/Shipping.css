@@ -33,7 +33,7 @@
     position: absolute;
     text-align: center;
     width: 100%;
-    top: 48%;
+    top: 42%;
     color: #FFFFFF;
     padding: 0 2rem;
 }
@@ -61,42 +61,46 @@
 
 @media screen and (max-width: 631px) {
     .shipping_page .overlay-content {
-        top: 50%;
+        top: 45%;
     }
-    .shipping_page .overlay-content .primary_heading{
-        font-size: 70px;
+
+    .shipping_page .overlay-content .primary_heading {
+        font-size: 65px;
     }
+
     .shipping_page .overlay-content .secondary_heading {
         font-size: 50px;
         top: -35px;
     }
 }
+
 @media screen and (max-width: 505px) {
     .shipping_page .overlay-content {
-        top: 52%;
+        top: 45%;
     }
+
     .shipping_page .overlay-content .primary_heading {
-        font-size: 55px;
+        font-size: 60px;
     }
 
     .shipping_page .overlay-content .secondary_heading {
-        font-size: 35px;
-        top: -32px;
+        font-size: 45px;
+        top: -35px;
     }
 }
 
-@media screen and (max-width: 418px) {
+@media screen and (max-width: 437px) {
     .shipping_page .overlay-content {
-        top: 55%;
+        top: 45%;
     }
 
     .shipping_page .overlay-content .primary_heading {
-        font-size: 55px;
+        font-size: 56px;
     }
 
     .shipping_page .overlay-content .secondary_heading {
-        font-size: 30px;
-        top: -35px;
+        font-size: 45px;
+        top: -33px;
     }
 }
 
@@ -106,7 +110,7 @@
     }
 
     .shipping_page .overlay-content {
-        top: 55%;
+        top: 45%;
     }
 
     .shipping_page .overlay-content .primary_heading {
@@ -114,14 +118,14 @@
     }
 
     .shipping_page .overlay-content .secondary_heading {
-        font-size: 30px;
-        top: -35px;
+        font-size: 40px;
+        top: -30px;
     }
 }
 
 @media screen and (max-width: 392px) {
     .shipping_page .overlay-content {
-        top: 55%;
+        top: 45%;
     }
 
     .shipping_page .overlay-content .primary_heading {
@@ -129,13 +133,14 @@
     }
 
     .shipping_page .overlay-content .secondary_heading {
-        font-size: 30px;
-        top: -32px;
+        font-size: 40px;
+        top: -30px;
     }
 }
+
 @media screen and (max-width: 379px) {
     .shipping_page .overlay-content {
-        top: 55%;
+        top: 45%;
     }
 
     .shipping_page .overlay-content .primary_heading {
@@ -143,7 +148,7 @@
     }
 
     .shipping_page .overlay-content .secondary_heading {
-        font-size: 35px;
-        top: -32px;
+        font-size: 30px;
+        top: -30px;
     }
 }

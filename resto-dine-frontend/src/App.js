@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
 import Landing from './pages/Landing';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -21,6 +21,7 @@ import MenuPage from './pages/MenuPage';
 import OrderList from './pages/OrderList';
 import Register from './pages/Register';
 import BookingList from './pages/BookingList';
+import ProtectedRoute from './shared/securityUtils/ProtectedRoute';
 
 const token = localStorage.getItem("jwt-token");
 if (token) {
@@ -46,20 +47,25 @@ function App() {
   return (
       <Router>        
           <MainNavigation/>
-          <Route exact path="/" component={Landing}/>
-          <Route exact path="/food-products" component={FoodProduct}/>
-          <Route exact path="/food-item/:foodId" component={SingleProduct}/>
-          <Route exact path="/cart" component={CartPage}/>
-          <Route exact path="/login" component={Login}/>
-          <Route exact path="/register" component={Register}/>
-          <Route exact path="/shipping" component={Shipping}/>
-          <Route exact path="/payment" component={Payment}/>
-          <Route exact path="/place-order" component={PlaceOrder}/>
-          <Route exact path="/order/:orderId" component={OrderDetail}/>
-          <Route exact path="/foodCategory/:category" component={FoodCategory}/>
-          <Route exact path="/menu-list" component={MenuPage}/>
-          <Route exact path="/reservation" component={BookingList}/>
-          <Route exact path="/orders" component={OrderList}/>
+          <main>
+            <Switch>
+              <Route exact path="/" component={Landing}/>
+              <Route exact path="/food-products" component={FoodProduct}/>
+              <Route exact path="/food-item/:foodId" component={SingleProduct}/>
+              <Route exact path="/cart" component={CartPage}/>
+              <Route exact path="/login" component={Login}/>
+              <Route exact path="/register" component={Register}/>
+              <ProtectedRoute exact path="/shipping" component={Shipping}/>
+              <ProtectedRoute exact path="/payment" component={Payment}/>
+              <ProtectedRoute exact path="/place-order" component={PlaceOrder}/>
+              <ProtectedRoute exact path="/order/:orderId" component={OrderDetail}/>
+              <Route exact path="/foodCategory/:category" component={FoodCategory}/>
+              <Route exact path="/menu-list" component={MenuPage}/>
+              <ProtectedRoute exact path="/reservation" component={BookingList}/>
+              <ProtectedRoute exact path="/orders" component={OrderList}/>
+              <Redirect to="/"/>
+            </Switch>
+          </main>
       </Router>
   );
 }

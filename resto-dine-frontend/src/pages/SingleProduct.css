@@ -33,7 +33,7 @@
     position: absolute;
     text-align: center;
     width: 100%;
-    top: 48%;
+    top: 42%;
     color: #FFFFFF;
     padding: 0 2rem;
 }
@@ -83,7 +83,7 @@
     }
 
     .single_product .overlay-content {
-        top: 44%;
+        top: 45%;
     }
 
 }

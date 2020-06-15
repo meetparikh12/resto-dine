@@ -33,7 +33,7 @@
     position: absolute;
     text-align: center;
     width: 100%;
-    top: 48%;
+    top: 42%;
     color: #FFFFFF;
     padding: 0 2rem;
 }
@@ -58,49 +58,48 @@
     font-weight: 700;
     line-height: 40px;
 }
-
 @media screen and (max-width: 631px) {
     .menu_list_banner .overlay-content {
-        top: 50%;
+        top: 42%;
     }
 
     .menu_list_banner .overlay-content .primary_heading {
-        font-size: 75px;
+        font-size: 90px;
     }
 
     .menu_list_banner .overlay-content .secondary_heading {
         font-size: 55px;
-        top: -35px;
+        top: -42px;
     }
 }
 
 @media screen and (max-width: 505px) {
     .menu_list_banner .overlay-content {
-        top: 51%;
+        top: 42%;
     }
 
     .menu_list_banner .overlay-content .primary_heading {
-        font-size: 70px;
+        font-size: 90px;
     }
 
     .menu_list_banner .overlay-content .secondary_heading {
-        font-size: 40px;
-        top: -35px;
+        font-size: 50px;
+        top: -42px;
     }
 }
 
-@media screen and (max-width: 418px) {
+@media screen and (max-width: 437px) {
     .menu_list_banner .overlay-content {
-        top: 52%;
+        top: 42%;
     }
 
     .menu_list_banner .overlay-content .primary_heading {
-        font-size: 65px;
+        font-size: 90px;
     }
 
     .menu_list_banner .overlay-content .secondary_heading {
-        font-size: 40px;
-        top: -35px;
+        font-size: 50px;
+        top: -42px;
     }
 }
 
@@ -110,45 +109,45 @@
     }
 
     .menu_list_banner .overlay-content {
-        top: 53%;
+        top: 42%;
     }
 
     .menu_list_banner .overlay-content .primary_heading {
-        font-size: 60px;
+        font-size: 90px;
     }
 
     .menu_list_banner .overlay-content .secondary_heading {
-        font-size: 35px;
-        top: -35px;
+        font-size: 50px;
+        top: -42px;
     }
 }
 
 @media screen and (max-width: 392px) {
     .menu_list_banner .overlay-content {
-        top: 53%;
+        top: 42%;
     }
 
     .menu_list_banner .overlay-content .primary_heading {
-        font-size: 58px;
+        font-size: 90px;
     }
 
     .menu_list_banner .overlay-content .secondary_heading {
-        font-size: 35px;
-        top: -32px;
+        font-size: 50px;
+        top: -42px;
     }
 }
 
 @media screen and (max-width: 379px) {
     .menu_list_banner .overlay-content {
-        top: 53%;
+        top: 42%;
     }
 
     .menu_list_banner .overlay-content .primary_heading {
-        font-size: 55px;
+        font-size: 90px;
     }
 
     .menu_list_banner .overlay-content .secondary_heading {
-        font-size: 32px;
-        top: -32px;
+        font-size: 50px;
+        top: -42px;
     }
 }

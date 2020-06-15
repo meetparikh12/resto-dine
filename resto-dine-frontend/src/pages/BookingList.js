@@ -87,7 +87,7 @@ class BookingList extends Component {
                                 <tbody>
                                     <tr>
                                         <td>{this.state.reservationId}</td>
-                                        <td>{this.state.date} | {this.state.time}</td>
+                                        <td>{this.state.date} {this.state.time}</td>
                                         <td>{this.state.noOfPeople}</td>
                                         <td className="text-center text-danger">{this.state.status}</td>
                                     </tr>

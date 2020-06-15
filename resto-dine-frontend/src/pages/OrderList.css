@@ -33,7 +33,7 @@
     position: absolute;
     text-align: center;
     width: 100%;
-    top: 48%;
+    top: 42%;
     color: #FFFFFF;
     padding: 0 2rem;
 }
@@ -63,87 +63,58 @@
     margin: auto auto 6% auto;
 }
 
-
-@media screen and (max-width: 793px) {
-    .order_list_banner .overlay-content .primary_heading {
-        font-size: 80px;
-    }
-
-    .order_list_banner .overlay-content .secondary_heading {
-        font-size: 50px;
-    }
-}
-
-@media screen and (max-width: 768px){
-    .table-res {
-        display: block;
-        width: 100%;
-        overflow-x: auto;
-    }
-}
-
-@media screen and (max-width: 552px) {
-    .order_list_banner .overlay-content .primary_heading {
-        font-size: 80px;
-    }
-
-    .order_list_banner .overlay-content .secondary_heading {
-        font-size: 50px;
-    }
-}
-
-@media screen and (max-width: 499px) {
-    .order_list_banner .overlay-content .primary_heading {
-        font-size: 85px;
-    }
-
-    .order_list_banner .overlay-content .secondary_heading {
-        font-size: 50px;
-    }
-}
-
-@media screen and (max-width: 458px) {
-    .order_list_banner .overlay-content .primary_heading {
-        font-size: 80px;
-    }
-
-    .order_list_banner .overlay-content .secondary_heading {
-        font-size: 45px;
-    }
-}
-
-@media screen and (max-width: 445px) {
-    .order_list_banner .overlay-content .primary_heading {
-        font-size: 75px;
-    }
-
-    .order_list_banner .overlay-content .secondary_heading {
-        font-size: 45px;
-    }
-}
-
-@media screen and (max-width: 418px) {
+@media screen and (max-width: 631px) {
     .order_list_banner .overlay-content {
-        top: 50%;
+        top: 42%;
     }
 
     .order_list_banner .overlay-content .primary_heading {
-        font-size: 75px;
+        font-size: 90px;
     }
 
     .order_list_banner .overlay-content .secondary_heading {
-        font-size: 45px;
-        top: -38px;
+        font-size: 55px;
+        top: -42px;
     }
 }
 
-@media screen and (max-width: 403px) {
+@media screen and (max-width: 505px) {
+    .order_list_banner .overlay-content {
+        top: 42%;
+    }
+
+    .order_list_banner .overlay-content .primary_heading {
+        font-size: 90px;
+    }
+
+    .order_list_banner .overlay-content .secondary_heading {
+        font-size: 50px;
+        top: -42px;
+    }
+}
+
+@media screen and (max-width: 437px) {
+    .order_list_banner .overlay-content {
+        top: 42%;
+    }
+
+    .order_list_banner .overlay-content .primary_heading {
+        font-size: 90px;
+    }
+
+    .order_list_banner .overlay-content .secondary_heading {
+        font-size: 50px;
+        top: -42px;
+    }
+}
+
+@media screen and (max-width: 409px) {
     .order_list_banner {
         height: 30rem !important;
     }
 
     .order_list_banner .overlay-content {
-        top: 52%;
+        top: 42%;
     }
 
     .order_list_banner .overlay-content .primary_heading {
@@ -151,29 +122,14 @@
     }
 
     .order_list_banner .overlay-content .secondary_heading {
-        font-size: 40px;
-        top: -39px;
-    }
-}
-
-@media screen and (max-width: 389px) {
-    .order_list_banner .overlay-content {
-        top: 50%;
-    }
-
-    .order_list_banner .overlay-content .primary_heading {
-        font-size: 70px;
-    }
-
-    .order_list_banner .overlay-content .secondary_heading {
-        font-size: 40px;
+        font-size: 50px;
         top: -42px;
     }
 }
 
-@media screen and (max-width: 362px) {
+@media screen and (max-width: 392px) {
     .order_list_banner .overlay-content {
-        top: 50%;
+        top: 42%;
     }
 
     .order_list_banner .overlay-content .primary_heading {
@@ -181,7 +137,22 @@
     }
 
     .order_list_banner .overlay-content .secondary_heading {
-        font-size: 35px;
+        font-size: 50px;
+        top: -42px;
+    }
+}
+
+@media screen and (max-width: 379px) {
+    .order_list_banner .overlay-content {
+        top: 42%;
+    }
+
+    .order_list_banner .overlay-content .primary_heading {
+        font-size: 70px;
+    }
+
+    .order_list_banner .overlay-content .secondary_heading {
+        font-size: 40px;
         top: -42px;
     }
 }

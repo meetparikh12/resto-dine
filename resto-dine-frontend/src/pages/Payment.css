@@ -33,7 +33,7 @@
     position: absolute;
     text-align: center;
     width: 100%;
-    top: 48%;
+    top: 42%;
     color: #FFFFFF;
     padding: 0 2rem;
 }
@@ -60,7 +60,7 @@
 }
 @media screen and (max-width: 631px) {
     .payment_page .overlay-content {
-        top: 50%;
+        top: 42%;
     }
 
     .payment_page .overlay-content .primary_heading {
@@ -68,38 +68,38 @@
     }
 
     .payment_page .overlay-content .secondary_heading {
-        font-size: 50px;
-        top: -35px;
+        font-size: 60px;
+        top: -33px;
     }
 }
 
 @media screen and (max-width: 505px) {
     .payment_page .overlay-content {
-        top: 52%;
+        top: 42%;
     }
 
     .payment_page .overlay-content .primary_heading {
-        font-size: 55px;
+        font-size: 70px;
     }
 
     .payment_page .overlay-content .secondary_heading {
-        font-size: 35px;
-        top: -32px;
+        font-size: 60px;
+        top: -33px;
     }
 }
 
-@media screen and (max-width: 418px) {
+@media screen and (max-width: 437px) {
     .payment_page .overlay-content {
-        top: 55%;
+        top: 42%;
     }
 
     .payment_page .overlay-content .primary_heading {
-        font-size: 55px;
+        font-size: 60px;
     }
 
     .payment_page .overlay-content .secondary_heading {
-        font-size: 30px;
-        top: -35px;
+        font-size: 45px;
+        top: -30px;
     }
 }
 
@@ -109,45 +109,45 @@
     }
 
     .payment_page .overlay-content {
-        top: 55%;
+        top: 42%;
     }
 
     .payment_page .overlay-content .primary_heading {
-        font-size: 52px;
+        font-size: 55px;
     }
 
     .payment_page .overlay-content .secondary_heading {
-        font-size: 30px;
-        top: -35px;
+        font-size: 45px;
+        top: -30px;
     }
 }
 
 @media screen and (max-width: 392px) {
     .payment_page .overlay-content {
-        top: 55%;
+        top: 42%;
     }
 
     .payment_page .overlay-content .primary_heading {
-        font-size: 50px;
+        font-size: 55px;
     }
 
     .payment_page .overlay-content .secondary_heading {
-        font-size: 30px;
-        top: -32px;
+        font-size: 45px;
+        top: -30px;
     }
 }
 
 @media screen and (max-width: 379px) {
     .payment_page .overlay-content {
-        top: 55%;
+        top: 42%;
     }
 
     .payment_page .overlay-content .primary_heading {
-        font-size: 47px;
+        font-size: 55px;
     }
 
     .payment_page .overlay-content .secondary_heading {
-        font-size: 35px;
-        top: -32px;
+        font-size: 45px;
+        top: -30px;
     }
 }

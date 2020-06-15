@@ -33,7 +33,7 @@
     position: absolute;
     text-align: center;
     width: 100%;
-    top: 48%;
+    top: 42%;
     color: #FFFFFF;
     padding: 0 2rem;
 }
@@ -62,93 +62,73 @@
 .payment-btn {
     margin: auto auto 6% auto;
 }
-@media screen and (max-width: 793px) {
+@media screen and (max-width: 631px) {
+    .order_details .overlay-content {
+        top: 42%;
+    }
+
     .order_details .overlay-content .primary_heading {
-        font-size: 80px;
+        font-size: 90px;
+    }
+
+    .order_details .overlay-content .secondary_heading {
+        font-size: 55px;
+        top: -42px;
+    }
+}
+
+@media screen and (max-width: 505px) {
+    .order_details .overlay-content {
+        top: 42%;
+    }
+
+    .order_details .overlay-content .primary_heading {
+        font-size: 90px;
     }
 
     .order_details .overlay-content .secondary_heading {
         font-size: 50px;
-    }
-}
-
-@media screen and (max-width: 552px) {
-    .order_details .overlay-content .primary_heading {
-        font-size: 80px;
-    }
-
-    .order_details .overlay-content .secondary_heading {
-        font-size: 50px;
-    }
-}
-
-@media screen and (max-width: 499px) {
-    .order_details .overlay-content .primary_heading {
-        font-size: 80px;
-    }
-
-    .order_details .overlay-content .secondary_heading {
-        font-size: 30px;
-    }
-}
-
-@media screen and (max-width: 458px) {
-    .order_details .overlay-content .primary_heading {
-        font-size: 80px;
-    }
-
-    .order_details .overlay-content .secondary_heading {
-        font-size: 25px;
+        top: -42px;
     }
 }
 
 @media screen and (max-width: 445px) {
-    .order_details .overlay-content .primary_heading {
-        font-size: 65px;
-    }
-
-    .order_details .overlay-content .secondary_heading {
-        font-size: 35px;
-    }
-}
-
-@media screen and (max-width: 418px) {
     .order_details .overlay-content {
-        top: 50%;
+        top: 42%;
     }
 
     .order_details .overlay-content .primary_heading {
-        font-size: 60px;
+        font-size: 70px;
     }
 
     .order_details .overlay-content .secondary_heading {
-        font-size: 25px;
-        top: -38px;
+        font-size: 30px;
+        top: -42px;
     }
 }
 
-@media screen and (max-width: 403px) {
+@media screen and (max-width: 409px) {
     .order_details {
         height: 30rem !important;
     }
 
     .order_details .overlay-content {
-        top: 52%;
+        top: 42%;
     }
 
     .order_details .overlay-content .primary_heading {
-        font-size: 60px;
+        font-size: 70px;
     }
 
     .order_details .overlay-content .secondary_heading {
-        font-size: 20px;
-        top: -39px;
+        font-size: 30px;
+        top: -42px;
     }
 }
 
-@media screen and (max-width: 389px) {
+@media screen and (max-width: 392px) {
     .order_details .overlay-content {
-        top: 50%;
+        top: 42%;
     }
 
     .order_details .overlay-content .primary_heading {
@@ -161,9 +141,9 @@
     }
 }
 
-@media screen and (max-width: 362px) {
+@media screen and (max-width: 379px) {
     .order_details .overlay-content {
-        top: 50%;
+        top: 42%;
     }
 
     .order_details .overlay-content .primary_heading {
