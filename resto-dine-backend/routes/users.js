@@ -4,11 +4,27 @@ const ErrorHandling = require('../models/ErrorHandling');
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const {secretKey} = require('../config/key')
+const {body, validationResult} = require('express-validator');
 
 const route = express.Router()
 
-route.post('/register', async (req,res,next)=> {
-    const {name, email, password} = req.body;
+route.post('/register', [
+    body('name').trim().isLength({min: 4, max: 30}).withMessage('Name should be between 4 to 10 characters'),
+    body('email').trim().isEmail().normalizeEmail().withMessage('Please enter a valid email'),
+    body('password').isLength({min: 6, max: 15}).withMessage('Password should be between 6 to 10 characters')
+    ] , 
+    async (req,res,next)=> {
+
+    const error = validationResult(req);
+    
+    if(!error.isEmpty()){
+        let err = {};
+        err.message = error.array();
+        err.status = 422;
+        return next(err);
+    }
+
+    const {name, email, password, confirmPassword} = req.body;
     let isEmailAlreadyInUse;
     try {
         isEmailAlreadyInUse = await User.findOne({email})
@@ -17,6 +33,9 @@ route.post('/register', async (req,res,next)=> {
     }
     if(isEmailAlreadyInUse){
         return next(new ErrorHandling('Email already in use', 422))
+    }
+    if (password !== confirmPassword) {
+        return next(new ErrorHandling('Password does not match', 422));
     }
     let hashedPassword;
     try {
@@ -32,7 +51,7 @@ route.post('/register', async (req,res,next)=> {
     }catch(err){
         return next(new ErrorHandling('User not registered', 500))
     }
-    res.status(201).json({user})
+    res.status(201).json({message: "Registered Successfully"})
     
 })
 
