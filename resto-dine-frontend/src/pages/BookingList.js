@@ -54,7 +54,7 @@ class BookingList extends Component {
                 <div className="container"> 
                     <div className="row">
                     <div className="col-md-12">
-                    <Card style={{width: "max-content", margin:"30% auto"}}>
+                    <Card style={{margin:"30% auto"}}>
                         <h4>No past booking in your account.</h4>
                     </Card>  
                     </div>

@@ -47,7 +47,7 @@ class OrderList extends Component {
                 <div className="container"> 
                     <div className="row">
                     <div className="col-md-12">
-                    <Card style={{width: "max-content", margin:"30% auto"}}>
+                    <Card style={{margin:"30% auto"}}>
                         <h4>Sorry, You have no past orders yet.</h4>
                         <Link to="/food-products"><button type="button" className="btn mt-2 shopping-btn text-uppercase font-weight-light">Continue Shopping</button></Link>
                     </Card>  
