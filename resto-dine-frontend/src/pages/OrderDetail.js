@@ -62,6 +62,7 @@ class OrderDetail extends Component {
                 position: toast.POSITION.BOTTOM_RIGHT,
                 autoClose: 2000
             })
+            this.props.history.push('/')
         })
     }
 
