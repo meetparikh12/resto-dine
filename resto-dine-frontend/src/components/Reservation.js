@@ -16,7 +16,8 @@ class Reservation extends Component {
             time: "",
             name: "",
             phone: "",
-            email: ""
+            email: "",
+            isBtnDisabled: false
         }
 
         this.fieldChangeHandler = this.fieldChangeHandler.bind(this);
@@ -31,10 +32,16 @@ class Reservation extends Component {
 
     formSubmitHandler(e){
         e.preventDefault();
+        this.setState({
+            isBtnDisabled: true
+        })
         if(!this.props.loggedInUser.userId){
             toast.info('You need to login first in order to book table', {
                 position: toast.POSITION.BOTTOM_RIGHT,
                 autoClose: 2000
+            })
+            this.setState({
+                isBtnDisabled: false
             })
         } else {
             const reservation = {
@@ -51,11 +58,17 @@ class Reservation extends Component {
                     position: toast.POSITION.BOTTOM_RIGHT,
                     autoClose: 2000
                 })
+                this.setState({
+                    isBtnDisabled: false
+                })
             })
             .catch((err)=> {
                 toast.error(err.response.data.message, {
                     position: toast.POSITION.BOTTOM_RIGHT,
                     autoClose: 2000
+                })
+                this.setState({
+                    isBtnDisabled: false
                 })
             })
             
@@ -146,7 +159,7 @@ class Reservation extends Component {
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="form-group btn-field">
-                                    <input type="submit" value="Book Table" className="btn-style"/>
+                                    <input type="submit" disabled={this.state.isBtnDisabled} value="Book Table" className="btn-style"/>
                                 </div>
                             </div>
                         </div>

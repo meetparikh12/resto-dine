@@ -82,9 +82,9 @@ class Login extends Component{
                                 <div className="form-group">
                                     <p className="forget-pass text-white">Forgot Password?</p>
                                 </div>
-                                <button className="btn btn-submit btn-block text-uppercase text-white" type="submit">Login</button>
+                                <button className="btn btn-submit btn-block text-uppercase text-white" disabled={this.state.isBtnDisabled} type="submit">Login</button>
                                 <p className="or"><span></span>OR<span></span></p>
-                                <Link to="/register" style={{textDecoration: "none"}}><button className="btn btn-login text-uppercase text-white btn-block">Create Account</button></Link>
+                                <Link to="/register" style={{textDecoration: "none"}}><button disabled={this.state.isBtnDisabled} className="btn btn-login text-uppercase text-white btn-block">Create Account</button></Link>
                             </div>
                         </form>
                     </div>

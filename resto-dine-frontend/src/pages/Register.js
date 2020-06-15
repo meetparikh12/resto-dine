@@ -88,11 +88,11 @@ class Register extends Component{
                                     <label htmlFor="confirmPassword">Confirm Password</label>
                                     <input className="form-control" formcontrolname="confirmPassword" onChange={this.fieldChangeHandler} id="confirmPassword" name="confirmPassword" type="password" value={this.state.confirmPassword}/>
                                 </div>
-                                <button className="btn btn-submit btn-block text-uppercase text-white" type="submit">Create Account</button>
+                                <button className="btn btn-submit btn-block text-uppercase text-white" disabled={this.state.isBtnDisabled} type="submit">Create Account</button>
                                 <p className="or"><span></span>OR<span></span></p>
                                 <p className="text-center text-white">Already have an account?</p>
                                 
-                                <Link to="/login" style={{textDecoration: "none"}}><button className="btn btn-login text-uppercase text-white btn-block">Login</button></Link>
+                                <Link to="/login" style={{textDecoration: "none"}}><button disabled={this.state.isBtnDisabled} className="btn btn-login text-uppercase text-white btn-block">Login</button></Link>
                             </div>
                         </form>
                     </div>

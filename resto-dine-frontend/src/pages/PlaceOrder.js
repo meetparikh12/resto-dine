@@ -16,6 +16,7 @@ function PlaceOrder(props){
     const [subTotal, setSubTotal] = useState(0);
     const {shippingDetails, paymentMethod, cart} = props;
     const [isLoaded, setIsLoaded] = useState(false);
+    const [isBtnDisabled, setIsBtnDisabled] = useState(false);
     const shippingPrice = subTotal > 1000 ? 0 : 100;
     const taxPrice = parseFloat((0.15 * subTotal).toFixed(2));
     const totalPrice = subTotal + shippingPrice + taxPrice;
@@ -47,6 +48,7 @@ function PlaceOrder(props){
     }, [props.cart])
 
     const placeOrderHandler = () => {
+        setIsBtnDisabled(true);
         const { shipping } = store.getState();
         const { shippingAddress, paymentMethod } = shipping;
         const {address, city, country, postalCode} = shippingAddress;
@@ -79,6 +81,7 @@ function PlaceOrder(props){
                 position: toast.POSITION.BOTTOM_RIGHT,
                 autoClose: 2000
             })
+            setIsBtnDisabled(false);
         });
     }
 
@@ -141,7 +144,7 @@ function PlaceOrder(props){
                                 <p className="card-text">Tax: {taxPrice}/- INR</p>
                                 <h5 style={{color: "crimson"}} className="card-title">Total: {totalPrice}/- INR</h5>
                             </div>
-                            <button onClick={placeOrderHandler} className="btn text-uppercase w-50 text-white font-weight-lighter btn-block mb-3" style={{backgroundColor: "#C81912"}}>Place Order</button>      
+                            <button onClick={placeOrderHandler} disabled={isBtnDisabled} className="btn text-uppercase w-50 text-white font-weight-lighter btn-block mb-3" style={{backgroundColor: "#C81912"}}>Place Order</button>      
                         </div>
                     </div>
                 </div>
