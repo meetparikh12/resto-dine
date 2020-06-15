@@ -20,6 +20,7 @@ import FoodCategory from './pages/FoodCategory';
 import MenuPage from './pages/MenuPage';
 import OrderList from './pages/OrderList';
 import Register from './pages/Register';
+import BookingList from './pages/BookingList';
 
 const token = localStorage.getItem("jwt-token");
 if (token) {
@@ -57,6 +58,7 @@ function App() {
           <Route exact path="/order/:orderId" component={OrderDetail}/>
           <Route exact path="/foodCategory/:category" component={FoodCategory}/>
           <Route exact path="/menu-list" component={MenuPage}/>
+          <Route exact path="/reservation" component={BookingList}/>
           <Route exact path="/orders" component={OrderList}/>
       </Router>
   );

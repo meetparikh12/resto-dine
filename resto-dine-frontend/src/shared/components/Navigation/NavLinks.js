@@ -36,6 +36,10 @@ function NavLinks(props) {
                 <NavLink to="/menu-list" style={{textDecoration: "none"}}>MENU LIST</NavLink>
             </li>    
 
+            { loggedInUser.userId && <li>
+                <NavLink to="/reservation" style={{textDecoration: "none"}}>BOOKED TABLE</NavLink>
+            </li>} 
+            
             <li>
                 <NavLink to="/cart" style={{textDecoration: "none"}}>MY CART</NavLink>
             </li>     
