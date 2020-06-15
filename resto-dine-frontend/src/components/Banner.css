@@ -6,12 +6,6 @@
 }
 .bg-img{
     background-image: url("/img/banner/banner-image.jpg");
-    /* height: 100vh; */
-    /* padding-top: 56%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover; */ 
-
     position: absolute;
     top: 0;
     right: 0;
@@ -38,38 +32,151 @@
     position: absolute;
     text-align: center;
     width: 100%;
-    top: 40%;
+    top: 50%;
     color: #FFFFFF;
-    text-transform: uppercase;
     padding: 0 2rem;
 }
-.banner .overlay-content h5 {
-    letter-spacing: 1px;
-    font-weight: 400;
-    color: #f7f7f7;
-    line-height: 1.7rem;
-    font-size: 1.25rem;
-}
-.banner .overlay-content h1 {
-     font-weight: 900;
-     font-size: 52px;
-     letter-spacing: 1px;
+
+.banner .overlay-content .primary_heading {
+    font-family: "Pinyon Script", serif;
+    color: #FFA33E;
+    margin: 0;
+    padding: 0;
+    font-size: 80px;
 }
 
-.banner .overlay-content .btn {
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid #FFFFFF;
-    margin: 1rem;
-    color: #fff;
-    padding: 1%;
+.banner .overlay-content .secondary_heading {
     text-transform: uppercase;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0.2rem;
+    font-size: 70px;
+    position: relative;
+    top: -35px;
+    font-weight: 700;
+    line-height: 40px;
+}
+
+@media screen and (max-width: 718px) {
+    .banner .overlay-content {
+        top: 50%;
+    }
+
+    .banner .overlay-content .primary_heading {
+        font-size: 69px;
+    }
+
+    .banner .overlay-content .secondary_heading {
+        font-size: 60px;
+        top: -30px;
+    }
+}
+
+
+@media screen and (max-width: 631px) {
+    .banner .overlay-content {
+        top: 50%;
+    }
+
+    .banner .overlay-content .primary_heading {
+        font-size: 62px;
+    }
+
+    .banner .overlay-content .secondary_heading {
+        font-size: 50px;
+        top: -30px;
+    }
 }
 
 @media screen and (max-width: 575px) {
     .banner {
         height: 30rem !important;
     }
-    .banner .overlay-content .btn {
-        padding: 2%;
+    .banner .overlay-content .primary_heading {
+        font-size: 54px;
+    }
+
+    .banner .overlay-content .secondary_heading {
+        font-size: 45px;
+        top: -30px;
+    }
+}
+@media screen and (max-width: 505px) {
+    .banner .overlay-content {
+        top: 51%;
+    }
+
+    .banner .overlay-content .primary_heading {
+        font-size: 43px;
+    }
+
+    .banner .overlay-content .secondary_heading {
+        font-size: 38px;
+        top: -28px;
+    }
+}
+
+@media screen and (max-width: 418px) {
+    .banner .overlay-content {
+        top: 52%;
+    }
+
+    .banner .overlay-content .primary_heading {
+        font-size: 42px;
+    }
+
+    .banner .overlay-content .secondary_heading {
+        font-size: 35px;
+        top: -28px;
+    }
+}
+
+@media screen and (max-width: 409px) {
+    .banner {
+        height: 30rem !important;
+    }
+
+    .banner .overlay-content {
+        top: 53%;
+    }
+
+    .banner .overlay-content .primary_heading {
+        font-size: 40px;
+    }
+
+    .banner .overlay-content .secondary_heading {
+        font-size: 35px;
+        top: -26px;
+    }
+}
+
+@media screen and (max-width: 392px) {
+    .banner .overlay-content {
+        top: 53%;
+    }
+
+    .banner .overlay-content .primary_heading {
+        font-size: 38px;
+    }
+
+    .banner .overlay-content .secondary_heading {
+        font-size: 35px;
+        top: -25px;
+    }
+}
+
+@media screen and (max-width: 379px) {
+    .banner .overlay-content {
+        top: 53%;
+    }
+
+    .banner .overlay-content .primary_heading {
+        font-size: 36px;
+    }
+
+    .banner .overlay-content .secondary_heading {
+        font-size: 32px;
+        top: -25px;
     }
 }

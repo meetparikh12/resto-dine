@@ -16,12 +16,12 @@ export default function AboutUs() {
                             </div>
                         </div>
                         <div className="about-us-details font-weight-light mt-3">
-                            <p>Pietech Solution is a global information technology, consulting and outsourcing company 
-                            was founded by a highly motivated groups of marketing Team software Developer. Pietech is not 
-                            a typical outsourcing company.Talented, driven and principled people  who are passionate 
-                            about IT services, came together because they wanted to do something special. Special work 
-                            for our clients is the front line, revolutionizing the way the industry works is a  gradual 
-                            effect, improving Industry through services is our long term goal.Please contact us if you 
+                            <p>Resto Dine is a famous multi cuisine restaurant in Vadodara, was founded by a highly motivated groups of Chef Team. 
+                            Resto Dine is a place to enjoy with friends, family and for couples also. Resto Dine provides a wonderful ambience,
+                            we provide different food varieties, menu, service, taste and everything is just perfect over here. Resto Dine is a 
+                            good place for continental food, it has value for money. We believe to maintain the high standard of hospitality service
+                            and food for making your experience better than the expectation. Your words can boost and motivate us to deliver the high 
+                            standard of service and high quality of food and improve where ever it is required. Please contact us if you 
                             have any questions.</p> 
                             <br/>
                         </div>

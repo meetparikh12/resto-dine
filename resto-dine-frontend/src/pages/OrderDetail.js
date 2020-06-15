@@ -58,8 +58,6 @@ class OrderDetail extends Component {
             })
         })
         .catch((err)=> {
-            console.log(err);
-            
             toast.error(err.response.data.message, {
                 position: toast.POSITION.BOTTOM_RIGHT,
                 autoClose: 2000
