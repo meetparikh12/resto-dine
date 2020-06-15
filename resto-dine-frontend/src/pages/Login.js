@@ -55,8 +55,6 @@ class Login extends Component{
 
         })
         .catch((err)=> {
-            console.log(err);
-            
             this.setState({
                 isBtnDisabled: false
             })
@@ -71,22 +69,22 @@ class Login extends Component{
                         <img className="bg-img" src="img/login/login.png" alt="login-img"></img>
                         <div className="bg-overlay"></div>
                         <form onSubmit={this.formSubmitHandler}>
-                            <div class="form-content">
+                            <div className="form-content">
                                 <img src="img/assets/spoon.png" alt="login-icon"/><p className="title">welcome to Resto Dine</p>
-                                <div class="form-group">
-                                    <label for="username">Email</label>
-                                    <input class="form-control" formcontrolname="email" onChange={this.formChangeHandler} id="email" name="email" type="email" value={this.state.email}/>
+                                <div className="form-group">
+                                    <label htmlFor="email">Email</label>
+                                    <input className="form-control" required formcontrolname="email" onChange={this.formChangeHandler} id="email" name="email" type="email" value={this.state.email}/>
                                 </div>
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input class="form-control" formcontrolname="password" onChange={this.formChangeHandler} id="password" name="password" type="password" value={this.state.password}/>
+                                <div className="form-group">
+                                    <label fhtmlForor="password">Password</label>
+                                    <input className="form-control" required formcontrolname="password" onChange={this.formChangeHandler} id="password" name="password" type="password" value={this.state.password}/>
                                 </div>
-                                <div class="form-group">
-                                    <a class="forget-pass text-white" style={{textDecoration: "none"}} href=" ">Forgot password ?</a>
+                                <div className="form-group">
+                                    <p className="forget-pass text-white">Forgot Password?</p>
                                 </div>
-                                <button class="btn btn-submit btn-block text-uppercase text-white" type="submit">Login</button>
-                                <p class="or"><span></span>OR<span></span></p>
-                                <Link to="/register"><button class="btn btn-login text-white btn-block">CREATE ACCOUNT</button></Link>
+                                <button className="btn btn-submit btn-block text-uppercase text-white" type="submit">Login</button>
+                                <p className="or"><span></span>OR<span></span></p>
+                                <Link to="/register" style={{textDecoration: "none"}}><button className="btn btn-login text-uppercase text-white btn-block">Create Account</button></Link>
                             </div>
                         </form>
                     </div>

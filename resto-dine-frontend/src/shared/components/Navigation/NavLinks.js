@@ -18,10 +18,6 @@ function NavLinks(props) {
             type: ADD_PAYMENT_METHOD,
             payload: {}
         })
-        // store.dispatch({
-        //     type: GET_ALL_PRODUCTS,
-        //     payload: []
-        // })
         props.logoutUser();
     }
     const {loggedInUser} = props;
@@ -48,14 +44,15 @@ function NavLinks(props) {
                 <NavLink to="/login" style={{textDecoration: "none"}}>LOGIN</NavLink>
             </li>}                
 
+            { loggedInUser.userId && <li>
+                <NavLink to="/orders" style={{textDecoration: "none"}}>MY ORDERS</NavLink>
+            </li>} 
                 
             { loggedInUser.userId && <li>
                 <NavLink to="/login" onClick={logoutUser} style={{textDecoration: "none"}}>LOGOUT</NavLink>
             </li>}
 
-            { loggedInUser.userId && <li>
-                <NavLink to="/orders" style={{textDecoration: "none"}}>MY ORDERS</NavLink>
-            </li>}      
+                 
 
         </ul>
     )

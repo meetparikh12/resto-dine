@@ -30,6 +30,9 @@ class OrderList extends Component {
                 position: toast.POSITION.BOTTOM_RIGHT,
                 autoClose: 2000
             })
+            this.setState({
+                isLoaded: true
+            })
         })
     }
 
@@ -44,9 +47,9 @@ class OrderList extends Component {
                 <div className="container"> 
                     <div className="row">
                     <div className="col-md-12">
-                    <Card style={{width: "max-content", margin:"5% auto"}}>
-                        <h4>Sorry, You have no orders yet.</h4>
-                        <Link to="/">Go Shopping</Link>
+                    <Card style={{width: "max-content", margin:"30% auto"}}>
+                        <h4>Sorry, You have no past orders yet.</h4>
+                        <Link to="/food-products"><button type="button" className="btn mt-2 shopping-btn text-uppercase font-weight-light">Continue Shopping</button></Link>
                     </Card>  
                     </div>
                     </div>
