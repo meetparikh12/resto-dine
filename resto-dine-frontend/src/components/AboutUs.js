@@ -6,7 +6,7 @@ export default function AboutUs() {
         <div className="about_us">
             <div className="container">
                 <div className="row ">
-                    <div className="col-md-7">
+                    <div className="col-xl-7">
                         <div className="section-header">
                             <h2>About Us</h2>
                             <div className="asset">
@@ -26,7 +26,7 @@ export default function AboutUs() {
                             <br/>
                         </div>
                     </div>
-                    <div className="col-md-5">
+                    <div className="col-xl-5">
                         <div className="size2 bo-rad-10 hov-img-zoom m-l-r-auto">
                             <img className="img-fluid" src="/img/about-us/about_us.jpg" style={{height: "100%"}} alt="About Us"/>
                         </div>
