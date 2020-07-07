@@ -5,6 +5,7 @@ Resto-Dine is a responsive restaurant web-site created using MERN stack, where u
 Modules covered are:
 - User Management
 - Menu Catalog
+- Cart Management
 - Order Management (Track & Place their order)
 - Table Reservation
 
